@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="750" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="500" y="35" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Transformer Architecture (Vaswani et al., 2017)
+  </text>
+  
+  <!-- Scaled Dot-Product Attention Box -->
+  <g transform="translate(50, 70)">
+    <rect x="0" y="0" width="280" height="300" rx="14" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="140" y="28" font-family="Arial" font-size="13" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Scaled Dot-Product Attention</text>
+    
+    <!-- Input boxes -->
+    <rect x="30" y="55" width="60" height="30" rx="4" fill="#ef4444"/>
+    <text x="60" y="73" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">Q</text>
+    
+    <rect x="110" y="55" width="60" height="30" rx="4" fill="#4facfe"/>
+    <text x="140" y="73" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">K</text>
+    
+    <rect x="190" y="55" width="60" height="30" rx="4" fill="#43e97b"/>
+    <text x="220" y="73" font-family="Arial" font-size="11" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">V</text>
+    
+    <!-- MatMul 1 -->
+    <path d="M 60 85 L 60 105 L 100 115" stroke="#ef4444" stroke-width="1.5" fill="none"/>
+    <path d="M 140 85 L 140 105 L 100 115" stroke="#4facfe" stroke-width="1.5" fill="none"/>
+    <rect x="70" y="115" width="60" height="25" rx="4" fill="#0f172a" stroke="#94a3b8" stroke-width="1"/>
+    <text x="100" y="130" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">MatMul</text>
+    
+    <!-- Scale -->
+    <path d="M 100 140 L 100 155" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="70" y="155" width="60" height="25" rx="4" fill="#0f172a" stroke="#94a3b8" stroke-width="1"/>
+    <text x="100" y="170" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Scale</text>
+    <text x="145" y="170" font-family="monospace" font-size="8" fill="#64748b" dominant-baseline="middle">/sqrt(d)</text>
+    
+    <!-- Mask (optional) -->
+    <path d="M 100 180 L 100 195" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="70" y="195" width="60" height="25" rx="4" fill="#0f172a" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="100" y="210" font-family="monospace" font-size="9" fill="#fbbf24" text-anchor="middle" dominant-baseline="middle">Mask</text>
+    
+    <!-- Softmax -->
+    <path d="M 100 220 L 100 235" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="60" y="235" width="80" height="25" rx="4" fill="#a78bfa"/>
+    <text x="100" y="250" font-family="monospace" font-size="9" fill="#fff" text-anchor="middle" dominant-baseline="middle">Softmax</text>
+    
+    <!-- MatMul 2 -->
+    <path d="M 100 260 L 100 275" stroke="#94a3b8" stroke-width="1.5"/>
+    <path d="M 220 85 L 220 275 L 160 275" stroke="#43e97b" stroke-width="1.5" fill="none"/>
+    <rect x="70" y="275" width="60" height="25" rx="4" fill="#0f172a" stroke="#94a3b8" stroke-width="1"/>
+    <text x="100" y="290" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">MatMul</text>
+  </g>
+  
+  <!-- Encoder Block -->
+  <g transform="translate(380, 70)">
+    <rect x="0" y="0" width="260" height="350" rx="14" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="130" y="28" font-family="Arial" font-size="13" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Encoder Layer (x L)</text>
+    
+    <!-- Input -->
+    <text x="130" y="55" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">inputs</text>
+    <path d="M 130 62 L 130 80" stroke="#94a3b8" stroke-width="1.5"/>
+    
+    <!-- Self-Attention -->
+    <rect x="40" y="80" width="180" height="40" rx="6" fill="#4facfe"/>
+    <text x="130" y="103" font-family="Arial" font-size="10" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Multi-Head Self-Attention</text>
+    
+    <!-- Add & Norm 1 -->
+    <path d="M 130 120 L 130 135" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="40" y="135" width="180" height="30" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="130" y="153" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Add and Norm</text>
+    
+    <!-- Residual connection 1 -->
+    <path d="M 20 100 L 20 150 L 40 150" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+    
+    <!-- FFN -->
+    <path d="M 130 165 L 130 190" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="40" y="190" width="180" height="40" rx="6" fill="#fbbf24"/>
+    <text x="130" y="213" font-family="Arial" font-size="10" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Feed Forward Network</text>
+    
+    <!-- Add & Norm 2 -->
+    <path d="M 130 230 L 130 250" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="40" y="250" width="180" height="30" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="130" y="268" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Add and Norm</text>
+    
+    <!-- Residual connection 2 -->
+    <path d="M 20 210 L 20 265 L 40 265" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+    
+    <!-- Output -->
+    <path d="M 130 280 L 130 310" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="130" y="330" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">to next layer</text>
+  </g>
+  
+  <!-- Decoder Block -->
+  <g transform="translate(690, 70)">
+    <rect x="0" y="0" width="260" height="450" rx="14" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="130" y="28" font-family="Arial" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Decoder Layer (x L)</text>
+    
+    <!-- Input -->
+    <text x="130" y="55" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">outputs (shifted)</text>
+    <path d="M 130 62 L 130 80" stroke="#94a3b8" stroke-width="1.5"/>
+    
+    <!-- Masked Self-Attention -->
+    <rect x="30" y="80" width="200" height="40" rx="6" fill="#43e97b"/>
+    <text x="130" y="103" font-family="Arial" font-size="10" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Masked Multi-Head Attention</text>
+    
+    <!-- Add & Norm 1 -->
+    <path d="M 130 120 L 130 135" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="40" y="135" width="180" height="30" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="130" y="153" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Add and Norm</text>
+    
+    <!-- Cross-Attention -->
+    <path d="M 130 165 L 130 190" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="30" y="190" width="200" height="40" rx="6" fill="#a78bfa"/>
+    <text x="130" y="213" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">Multi-Head Cross-Attention</text>
+    <text x="130" y="226" font-family="monospace" font-size="8" fill="#e9d5ff" text-anchor="middle" dominant-baseline="middle">(from encoder)</text>
+    
+    <!-- Add & Norm 2 -->
+    <path d="M 130 230 L 130 250" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="40" y="250" width="180" height="30" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="130" y="268" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Add and Norm</text>
+    
+    <!-- FFN -->
+    <path d="M 130 280 L 130 305" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="40" y="305" width="180" height="40" rx="6" fill="#fbbf24"/>
+    <text x="130" y="328" font-family="Arial" font-size="10" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Feed Forward Network</text>
+    
+    <!-- Add & Norm 3 -->
+    <path d="M 130 345 L 130 365" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="40" y="365" width="180" height="30" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="130" y="383" font-family="monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Add and Norm</text>
+    
+    <!-- Output -->
+    <path d="M 130 395 L 130 430" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="130" y="445" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">outputs</text>
+  </g>
+  
+  <!-- Complexity Box -->
+  <g transform="translate(50, 450)">
+    <rect x="0" y="0" width="280" height="150" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="140" y="25" font-family="Arial" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Complexity Analysis</text>
+    
+    <text x="20" y="55" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Self-Attention:</text>
+    <text x="20" y="75" font-family="monospace" font-size="11" fill="#ef4444" dominant-baseline="middle">Time: O(n^2 * d)</text>
+    <text x="20" y="95" font-family="monospace" font-size="11" fill="#ef4444" dominant-baseline="middle">Space: O(n^2 + n*d)</text>
+    
+    <text x="20" y="125" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">FFN: O(n * d * d_f)</text>
+    <text x="20" y="143" font-family="monospace" font-size="9" fill="#64748b" dominant-baseline="middle">Typically d_f = 4*d</text>
+  </g>
+  
+  <!-- Key components legend -->
+  <g transform="translate(50, 620)">
+    <rect x="0" y="0" width="900" height="110" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+    <text x="450" y="25" font-family="Arial" font-size="12" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Key Components</text>
+    
+    <rect x="20" y="45" width="15" height="15" rx="2" fill="#4facfe"/>
+    <text x="45" y="55" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">Self-Attention: relates all positions</text>
+    
+    <rect x="240" y="45" width="15" height="15" rx="2" fill="#a78bfa"/>
+    <text x="265" y="55" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">Cross-Attention: encoder-decoder</text>
+    
+    <rect x="500" y="45" width="15" height="15" rx="2" fill="#fbbf24"/>
+    <text x="525" y="55" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">FFN: position-wise transform</text>
+    
+    <rect x="720" y="45" width="15" height="15" rx="2" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="745" y="55" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">Add + Norm</text>
+    
+    <text x="20" y="90" font-family="monospace" font-size="9" fill="#64748b" dominant-baseline="middle">
+      The quadratic O(n^2) complexity from QK^T multiplication is the main bottleneck for long sequences
+    </text>
+  </g>
+</svg>
+

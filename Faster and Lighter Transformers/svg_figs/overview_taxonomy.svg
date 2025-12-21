@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <defs>
+    <linearGradient id="attentionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="distillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="quantGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="pruneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="shareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a"/>
+      <stop offset="100%" style="stop-color:#fee140"/>
+    </linearGradient>
+    <linearGradient id="nasGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8edea"/>
+      <stop offset="100%" style="stop-color:#fed6e3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" font-family="Arial, sans-serif" font-size="26" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Faster and Lighter Transformers: A Taxonomy
+  </text>
+  <text x="500" y="70" font-family="monospace" font-size="12" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Six approaches to make Transformers efficient for practical deployment
+  </text>
+  
+  <!-- Central node -->
+  <circle cx="500" cy="200" r="70" fill="#ef4444" filter="url(#shadow)"/>
+  <text x="500" y="190" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Efficient</text>
+  <text x="500" y="210" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Transformers</text>
+  
+  <!-- Connection lines -->
+  <line x1="430" y1="200" x2="170" y2="350" stroke="#667eea" stroke-width="2" opacity="0.6"/>
+  <line x1="470" y1="260" x2="340" y2="450" stroke="#f093fb" stroke-width="2" opacity="0.6"/>
+  <line x1="500" y1="270" x2="500" y2="450" stroke="#4facfe" stroke-width="2" opacity="0.6"/>
+  <line x1="530" y1="260" x2="660" y2="450" stroke="#43e97b" stroke-width="2" opacity="0.6"/>
+  <line x1="570" y1="200" x2="830" y2="350" stroke="#fa709a" stroke-width="2" opacity="0.6"/>
+  <line x1="500" y1="130" x2="500" y2="100" stroke="#a8edea" stroke-width="2" opacity="0.6"/>
+  
+  <!-- 1. Efficient Attention -->
+  <g transform="translate(50, 300)">
+    <rect x="0" y="0" width="240" height="180" rx="14" fill="#1e293b" stroke="url(#attentionGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="240" height="40" rx="14" fill="url(#attentionGrad)"/>
+    <rect x="0" y="25" width="240" height="15" fill="url(#attentionGrad)"/>
+    <text x="120" y="27" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Efficient Attention</text>
+    
+    <text x="20" y="65" font-family="monospace" font-size="10" fill="#667eea" dominant-baseline="middle">Sparse Patterns</text>
+    <text x="20" y="85" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Longformer, BigBird</text>
+    <text x="20" y="105" font-family="monospace" font-size="10" fill="#667eea" dominant-baseline="middle">Low-Rank Approximation</text>
+    <text x="20" y="125" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Linformer, Performer</text>
+    <text x="20" y="145" font-family="monospace" font-size="10" fill="#667eea" dominant-baseline="middle">Memory Compression</text>
+    <text x="20" y="165" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Compressive, Set Trans.</text>
+  </g>
+  
+  <!-- 2. Knowledge Distillation -->
+  <g transform="translate(220, 420)">
+    <rect x="0" y="0" width="240" height="160" rx="14" fill="#1e293b" stroke="url(#distillGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="240" height="40" rx="14" fill="url(#distillGrad)"/>
+    <rect x="0" y="25" width="240" height="15" fill="url(#distillGrad)"/>
+    <text x="120" y="27" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Knowledge Distillation</text>
+    
+    <text x="20" y="65" font-family="monospace" font-size="10" fill="#f5576c" dominant-baseline="middle">Task-Agnostic</text>
+    <text x="20" y="85" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• DistilBERT, TinyBERT</text>
+    <text x="20" y="105" font-family="monospace" font-size="10" fill="#f5576c" dominant-baseline="middle">Task-Specific</text>
+    <text x="20" y="125" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• BERT-PKD, MobileBERT</text>
+    <text x="20" y="145" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• MiniLM, Patient KD</text>
+  </g>
+  
+  <!-- 3. Quantization -->
+  <g transform="translate(380, 540)">
+    <rect x="0" y="0" width="240" height="140" rx="14" fill="#1e293b" stroke="url(#quantGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="240" height="40" rx="14" fill="url(#quantGrad)"/>
+    <rect x="0" y="25" width="240" height="15" fill="url(#quantGrad)"/>
+    <text x="120" y="27" font-family="Arial" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Quantization</text>
+    
+    <text x="20" y="65" font-family="monospace" font-size="10" fill="#4facfe" dominant-baseline="middle">Post-Training (PTQ)</text>
+    <text x="20" y="85" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• INT8, Dynamic quant</text>
+    <text x="20" y="105" font-family="monospace" font-size="10" fill="#4facfe" dominant-baseline="middle">Quantization-Aware (QAT)</text>
+    <text x="20" y="125" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Q-BERT, TernaryBERT</text>
+  </g>
+  
+  <!-- 4. Pruning -->
+  <g transform="translate(540, 420)">
+    <rect x="0" y="0" width="240" height="160" rx="14" fill="#1e293b" stroke="url(#pruneGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="240" height="40" rx="14" fill="url(#pruneGrad)"/>
+    <rect x="0" y="25" width="240" height="15" fill="url(#pruneGrad)"/>
+    <text x="120" y="27" font-family="Arial" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Pruning</text>
+    
+    <text x="20" y="65" font-family="monospace" font-size="10" fill="#43e97b" dominant-baseline="middle">Unstructured</text>
+    <text x="20" y="85" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Magnitude, Movement</text>
+    <text x="20" y="105" font-family="monospace" font-size="10" fill="#43e97b" dominant-baseline="middle">Structured</text>
+    <text x="20" y="125" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Head, Layer, Block</text>
+    <text x="20" y="145" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• LayerDrop, DynaBERT</text>
+  </g>
+  
+  <!-- 5. Weight Sharing -->
+  <g transform="translate(710, 300)">
+    <rect x="0" y="0" width="240" height="180" rx="14" fill="#1e293b" stroke="url(#shareGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="240" height="40" rx="14" fill="url(#shareGrad)"/>
+    <rect x="0" y="25" width="240" height="15" fill="url(#shareGrad)"/>
+    <text x="120" y="27" font-family="Arial" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Weight Sharing</text>
+    
+    <text x="20" y="65" font-family="monospace" font-size="10" fill="#fa709a" dominant-baseline="middle">Cross-Layer</text>
+    <text x="20" y="85" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• ALBERT, Universal Trans.</text>
+    <text x="20" y="105" font-family="monospace" font-size="10" fill="#fa709a" dominant-baseline="middle">Factorization</text>
+    <text x="20" y="125" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Embedding factorization</text>
+    <text x="20" y="145" font-family="monospace" font-size="10" fill="#fa709a" dominant-baseline="middle">Low-Rank</text>
+    <text x="20" y="165" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• LoRA, Adapters</text>
+  </g>
+  
+  <!-- 6. Neural Architecture Search (top) -->
+  <rect x="380" y="85" width="240" height="35" rx="10" fill="#1e293b" stroke="url(#nasGrad)" stroke-width="2" filter="url(#shadow)"/>
+  <text x="500" y="107" font-family="Arial" font-size="11" fill="#a8edea" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> NAS: AutoTinyBERT, HAT, NAS-BERT</text>
+</svg>
+

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="hbmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="sramGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="smGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1a1a2e" text-anchor="middle" dominant-baseline="middle">GPU Memory Hierarchy</text>
+  
+  <!-- GPU Chip outline -->
+  <rect x="50" y="60" width="800" height="370" rx="15" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2"/>
+  <text x="80" y="90" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#495057" dominant-baseline="middle">NVIDIA A100 GPU</text>
+  
+  <!-- HBM (Global Memory) - Large box at bottom -->
+  <rect x="80" y="300" width="740" height="110" rx="10" fill="url(#hbmGrad)" opacity="0.9"/>
+  <text x="450" y="340" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">HBM (Global Memory)</text>
+  <text x="450" y="370" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" dominant-baseline="middle">80 GB | 2 TB/s bandwidth | SLOW</text>
+  <text x="450" y="395" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">Stores Q, K, V matrices and the N x N attention matrices S, P</text>
+  
+  <!-- Arrow showing data flow -->
+  <path d="M 450 290 L 450 260" stroke="#6c757d" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 450 200 L 450 170" stroke="#6c757d" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+  <defs>
+    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="5" refY="10" orient="auto">
+      <path d="M 0 0 L 5 10 L 10 0" fill="#6c757d"/>
+    </marker>
+  </defs>
+  
+  <!-- SRAM boxes (On-chip memory per SM) -->
+  <g>
+    <!-- SM 1 -->
+    <rect x="100" y="120" width="160" height="130" rx="8" fill="url(#smGrad)" opacity="0.9"/>
+    <rect x="115" y="175" width="130" height="55" rx="5" fill="url(#sramGrad)" opacity="0.95"/>
+    <text x="180" y="145" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SM 1</text>
+    <text x="180" y="198" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SRAM</text>
+    <text x="180" y="215" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">192 KB | 19 TB/s</text>
+  </g>
+  
+  <!-- SM 2 -->
+  <g>
+    <rect x="280" y="120" width="160" height="130" rx="8" fill="url(#smGrad)" opacity="0.9"/>
+    <rect x="295" y="175" width="130" height="55" rx="5" fill="url(#sramGrad)" opacity="0.95"/>
+    <text x="360" y="145" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SM 2</text>
+    <text x="360" y="198" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SRAM</text>
+    <text x="360" y="215" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">192 KB | 19 TB/s</text>
+  </g>
+  
+  <!-- SM 3 -->
+  <g>
+    <rect x="460" y="120" width="160" height="130" rx="8" fill="url(#smGrad)" opacity="0.9"/>
+    <rect x="475" y="175" width="130" height="55" rx="5" fill="url(#sramGrad)" opacity="0.95"/>
+    <text x="540" y="145" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SM 3</text>
+    <text x="540" y="198" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SRAM</text>
+    <text x="540" y="215" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">192 KB | 19 TB/s</text>
+  </g>
+  
+  <!-- SM ... -->
+  <g>
+    <rect x="640" y="120" width="160" height="130" rx="8" fill="url(#smGrad)" opacity="0.9"/>
+    <rect x="655" y="175" width="130" height="55" rx="5" fill="url(#sramGrad)" opacity="0.95"/>
+    <text x="720" y="145" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SM ...</text>
+    <text x="720" y="198" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">SRAM</text>
+    <text x="720" y="215" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">192 KB | 19 TB/s</text>
+  </g>
+  
+  <!-- Speed comparison box -->
+  <rect x="100" y="260" width="340" height="30" rx="5" fill="#28a745" opacity="0.15"/>
+  <text x="270" y="280" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#28a745" text-anchor="middle" dominant-baseline="middle">SRAM: 10x faster than HBM!</text>
+  
+  <rect x="460" y="260" width="340" height="30" rx="5" fill="#dc3545" opacity="0.15"/>
+  <text x="630" y="280" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#dc3545" text-anchor="middle" dominant-baseline="middle">HBM: Large but slow I/O bottleneck</text>
+</svg>
+

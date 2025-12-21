@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+  <defs>
+    <linearGradient id="hardwareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="compactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="sparseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="linearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a"/>
+      <stop offset="100%" style="stop-color:#fee140"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="3" dy="3" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="500" y="50" font-family="Arial, sans-serif" font-size="32" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Efficient Attention Methods
+  </text>
+  <text x="500" y="85" font-family="monospace" font-size="14" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Four Classes of Optimization Strategies
+  </text>
+  
+  <!-- Center Circle -->
+  <circle cx="500" cy="360" r="85" fill="url(#centerGrad)" filter="url(#shadow)"/>
+  <text x="500" y="345" font-family="Arial" font-size="16" fill="#1e293b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Standard</text>
+  <text x="500" y="370" font-family="Arial" font-size="16" fill="#1e293b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Attention</text>
+  <text x="500" y="400" font-family="monospace" font-size="14" fill="#374151" text-anchor="middle" dominant-baseline="middle">O(N²)</text>
+  
+  <!-- Connection Lines -->
+  <line x1="415" y1="360" x2="250" y2="220" stroke="#667eea" stroke-width="3" opacity="0.5"/>
+  <line x1="585" y1="360" x2="750" y2="220" stroke="#f093fb" stroke-width="3" opacity="0.5"/>
+  <line x1="415" y1="360" x2="250" y2="500" stroke="#4facfe" stroke-width="3" opacity="0.5"/>
+  <line x1="585" y1="360" x2="750" y2="500" stroke="#43e97b" stroke-width="3" opacity="0.5"/>
+  
+  <!-- Class 1: Hardware-efficient -->
+  <g transform="translate(60, 120)">
+    <rect x="0" y="0" width="240" height="180" rx="16" fill="url(#hardwareGrad)" filter="url(#shadow)"/>
+    <text x="120" y="35" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Hardware-efficient</text>
+    
+    <rect x="25" y="55" width="70" height="40" rx="6" fill="#fff" opacity="0.2"/>
+    <text x="60" y="78" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">GPU Tiles</text>
+    
+    <text x="115" y="78" font-family="Arial" font-size="20" fill="#fff" text-anchor="middle" dominant-baseline="middle">→</text>
+    
+    <rect x="145" y="55" width="70" height="40" rx="6" fill="#fff" opacity="0.2"/>
+    <text x="180" y="78" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">Fusion</text>
+    
+    <text x="120" y="115" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• FlashAttention</text>
+    <text x="120" y="135" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• Memory I/O optim</text>
+    <text x="120" y="160" font-family="monospace" font-size="12" fill="#e8f0fe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Same O(N²), faster!</text>
+  </g>
+  
+  <!-- Class 2: Compact -->
+  <g transform="translate(700, 120)">
+    <rect x="0" y="0" width="240" height="180" rx="16" fill="url(#compactGrad)" filter="url(#shadow)"/>
+    <text x="120" y="35" font-family="Arial" font-size="18" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Compact</text>
+    
+    <rect x="30" y="55" width="55" height="35" rx="5" fill="#fff" opacity="0.3"/>
+    <text x="57" y="75" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">K, V</text>
+    
+    <text x="110" y="75" font-family="Arial" font-size="20" fill="#fff" text-anchor="middle" dominant-baseline="middle">→</text>
+    
+    <rect x="145" y="58" width="45" height="28" rx="5" fill="#fff" opacity="0.9"/>
+    <text x="167" y="75" font-family="monospace" font-size="10" fill="#f5576c" text-anchor="middle" dominant-baseline="middle">Kc,Vc</text>
+    
+    <text x="120" y="115" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• MQA, GQA, MLA</text>
+    <text x="120" y="135" font-family="monospace" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• KV cache compress</text>
+    <text x="120" y="160" font-family="monospace" font-size="12" fill="#e8f0fe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">O(ND) → O(NDc)</text>
+  </g>
+  
+  <!-- Class 3: Sparse -->
+  <g transform="translate(60, 400)">
+    <rect x="0" y="0" width="240" height="180" rx="16" fill="url(#sparseGrad)" filter="url(#shadow)"/>
+    <text x="120" y="35" font-family="Arial" font-size="18" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Sparse</text>
+    
+    <!-- Sparse pattern grid -->
+    <g transform="translate(55, 50)">
+      <rect x="0" y="0" width="130" height="50" rx="5" fill="#fff" opacity="0.3"/>
+      <rect x="5" y="5" width="20" height="12" fill="#0f172a" opacity="0.9"/>
+      <rect x="30" y="5" width="20" height="12" fill="#0f172a" opacity="0.3"/>
+      <rect x="55" y="5" width="20" height="12" fill="#fff" opacity="0.2"/>
+      <rect x="80" y="5" width="20" height="12" fill="#fff" opacity="0.2"/>
+      <rect x="105" y="5" width="20" height="12" fill="#fff" opacity="0.2"/>
+      <rect x="5" y="22" width="20" height="12" fill="#0f172a" opacity="0.3"/>
+      <rect x="30" y="22" width="20" height="12" fill="#0f172a" opacity="0.9"/>
+      <rect x="55" y="22" width="20" height="12" fill="#0f172a" opacity="0.3"/>
+      <rect x="80" y="22" width="20" height="12" fill="#fff" opacity="0.2"/>
+      <rect x="105" y="22" width="20" height="12" fill="#fff" opacity="0.2"/>
+      <rect x="5" y="36" width="20" height="10" fill="#fff" opacity="0.2"/>
+      <rect x="30" y="36" width="20" height="10" fill="#0f172a" opacity="0.3"/>
+      <rect x="55" y="36" width="20" height="10" fill="#0f172a" opacity="0.9"/>
+      <rect x="80" y="36" width="20" height="10" fill="#0f172a" opacity="0.3"/>
+      <rect x="105" y="36" width="20" height="10" fill="#fff" opacity="0.2"/>
+    </g>
+    
+    <text x="120" y="120" font-family="monospace" font-size="11" fill="#0f172a" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• Skip zero attention</text>
+    <text x="120" y="140" font-family="monospace" font-size="11" fill="#0f172a" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• Local + Global</text>
+    <text x="120" y="165" font-family="monospace" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">O(N√N) or O(N log N)</text>
+  </g>
+  
+  <!-- Class 4: Linear -->
+  <g transform="translate(700, 400)">
+    <rect x="0" y="0" width="240" height="180" rx="16" fill="url(#linearGrad)" filter="url(#shadow)"/>
+    <text x="120" y="35" font-family="Arial" font-size="18" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Linear</text>
+    
+    <rect x="25" y="55" width="190" height="35" rx="5" fill="#fff" opacity="0.4"/>
+    <text x="120" y="75" font-family="monospace" font-size="11" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Sₜ = Sₜ₋₁ + φ(kₜ)ᵀvₜ</text>
+    
+    <text x="120" y="115" font-family="monospace" font-size="11" fill="#0f172a" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• Kernel feature maps</text>
+    <text x="120" y="135" font-family="monospace" font-size="11" fill="#0f172a" text-anchor="middle" dominant-baseline="middle" opacity="0.9">• Mamba, RWKV, RetNet</text>
+    <text x="120" y="165" font-family="monospace" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">O(Nd²) - Linear in N!</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="500" y="630" font-family="monospace" font-size="13" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Standard Attention: O = softmax(QKᵀ/√d) · V  →  O(N²d) complexity
+  </text>
+  <text x="500" y="660" font-family="Arial" font-size="12" fill="#475569" text-anchor="middle" dominant-baseline="middle">
+    Each method offers unique trade-offs between speed, memory, and quality
+  </text>
+</svg>

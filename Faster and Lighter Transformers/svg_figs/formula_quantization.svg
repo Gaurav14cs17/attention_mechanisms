@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="380" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Quantization Formulas
+  </text>
+  
+  <!-- Uniform Quantization -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="350" height="130" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Uniform Quantization</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Q(x) = round(x/s) + z
+    </text>
+    
+    <text x="175" y="85" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      s = scale, z = zero-point
+    </text>
+    
+    <text x="175" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Maps FP32 to INT8/INT4</text>
+  </g>
+  
+  <!-- Dequantization -->
+  <g transform="translate(420, 70)">
+    <rect x="0" y="0" width="350" height="130" rx="12" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Dequantization</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      x_hat = s * (Q(x) - z)
+    </text>
+    
+    <text x="175" y="85" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      Approximates: x approx x_hat
+    </text>
+    
+    <text x="175" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Quantization error: |x - x_hat|</text>
+  </g>
+  
+  <!-- Scale Calculation -->
+  <g transform="translate(120, 220)">
+    <rect x="0" y="0" width="560" height="130" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2" filter="url(#shadow)"/>
+    <text x="280" y="28" font-family="Arial" font-size="14" fill="#a78bfa" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Scale and Zero-Point Calculation</text>
+    
+    <text x="140" y="65" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      s = (x_max - x_min) / (2^b - 1)
+    </text>
+    
+    <text x="420" y="65" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      z = round(-x_min / s)
+    </text>
+    
+    <text x="280" y="100" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      b = bit-width (8 for INT8, 4 for INT4)
+    </text>
+    
+    <text x="280" y="120" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+      INT8: 4x smaller | INT4: 8x smaller
+    </text>
+  </g>
+</svg>

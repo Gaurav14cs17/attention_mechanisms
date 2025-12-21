@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="450" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Linformer: Low-Rank Factorization (Equation 22)
+  </text>
+  <text x="450" y="60" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Wang et al. - Linear complexity through projection
+  </text>
+  
+  <!-- Original Attention -->
+  <g transform="translate(30, 90)">
+    <rect x="0" y="0" width="400" height="130" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Standard Attention O(n^2)</text>
+    
+    <text x="200" y="60" font-family="Georgia, serif" font-size="16" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attention(X) = Softmax(QK^T / sqrt(d)) V
+    </text>
+    
+    <text x="60" y="100" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[n x n]</text>
+    <text x="140" y="115" font-family="monospace" font-size="9" fill="#ef4444" dominant-baseline="middle">Bottleneck!</text>
+    <text x="300" y="100" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[n x d]</text>
+  </g>
+  
+  <!-- Arrow -->
+  <text x="450" y="165" font-family="Arial" font-size="20" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">Approximate with low-rank</text>
+  
+  <!-- Linformer Attention -->
+  <g transform="translate(30, 230)">
+    <rect x="0" y="0" width="840" height="180" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="2" filter="url(#shadow)"/>
+    <text x="420" y="28" font-family="Arial" font-size="14" fill="#4ade80" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Linformer Attention O(n*k)</text>
+    
+    <text x="420" y="70" font-family="Georgia, serif" font-size="18" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attention(X) = Softmax(Q(EK)^T / sqrt(d)) (FV)
+    </text>
+    
+    <!-- Dimension annotations -->
+    <g transform="translate(100, 100)">
+      <rect x="0" y="0" width="80" height="35" rx="4" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+      <text x="40" y="15" font-family="monospace" font-size="10" fill="#ef4444" text-anchor="middle" dominant-baseline="middle">Q</text>
+      <text x="40" y="30" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[n x d]</text>
+    </g>
+    
+    <g transform="translate(200, 100)">
+      <rect x="0" y="0" width="80" height="35" rx="4" fill="#0f172a" stroke="#4facfe" stroke-width="1"/>
+      <text x="40" y="15" font-family="monospace" font-size="10" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">E*K</text>
+      <text x="40" y="30" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[k x d]</text>
+    </g>
+    
+    <g transform="translate(320, 100)">
+      <rect x="0" y="0" width="120" height="35" rx="4" fill="#0f172a" stroke="#4ade80" stroke-width="1"/>
+      <text x="60" y="15" font-family="monospace" font-size="10" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">Q(EK)^T</text>
+      <text x="60" y="30" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[n x k] k much smaller than n!</text>
+    </g>
+    
+    <g transform="translate(480, 100)">
+      <rect x="0" y="0" width="80" height="35" rx="4" fill="#0f172a" stroke="#a78bfa" stroke-width="1"/>
+      <text x="40" y="15" font-family="monospace" font-size="10" fill="#a78bfa" text-anchor="middle" dominant-baseline="middle">F*V</text>
+      <text x="40" y="30" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[k x d]</text>
+    </g>
+    
+    <g transform="translate(600, 100)">
+      <rect x="0" y="0" width="100" height="35" rx="4" fill="#0f172a" stroke="#fbbf24" stroke-width="1"/>
+      <text x="50" y="15" font-family="monospace" font-size="10" fill="#fbbf24" text-anchor="middle" dominant-baseline="middle">E, F</text>
+      <text x="50" y="30" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[k x n] projections</text>
+    </g>
+    
+    <text x="420" y="165" font-family="monospace" font-size="10" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">
+      E, F can be shared across heads and layers with minimal performance loss
+    </text>
+  </g>
+</svg>
+

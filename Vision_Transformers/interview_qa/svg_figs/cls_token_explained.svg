@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 380">
+  <defs>
+    <linearGradient id="clsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="patchGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <marker id="arr2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="425" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">[CLS] Token: Purpose and Function</text>
+  
+  <!-- Input sequence -->
+  <g>
+    <text x="100" y="80" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Input Sequence</text>
+    
+    <!-- CLS token -->
+    <rect x="30" y="100" width="50" height="50" fill="url(#clsGrad)" rx="5"/>
+    <text x="55" y="130" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">[CLS]</text>
+    
+    <!-- Patch tokens -->
+    <rect x="90" y="100" width="40" height="50" fill="url(#patchGrad2)" rx="5"/>
+    <text x="110" y="130" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">P₁</text>
+    
+    <rect x="140" y="100" width="40" height="50" fill="url(#patchGrad2)" rx="5"/>
+    <text x="160" y="130" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">P₂</text>
+    
+    <rect x="190" y="100" width="40" height="50" fill="url(#patchGrad2)" rx="5"/>
+    <text x="210" y="130" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">P₃</text>
+    
+    <text x="250" y="130" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">...</text>
+    
+    <rect x="270" y="100" width="40" height="50" fill="url(#patchGrad2)" rx="5"/>
+    <text x="290" y="130" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Pₙ</text>
+  </g>
+  
+  <!-- Transformer box -->
+  <rect x="30" y="170" width="280" height="60" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" rx="8"/>
+  <text x="170" y="205" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Transformer Encoder (L layers)</text>
+  
+  <!-- Output -->
+  <g>
+    <text x="100" y="260" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Output Sequence</text>
+    
+    <rect x="30" y="280" width="50" height="50" fill="url(#clsGrad)" rx="5" stroke="#f39c12" stroke-width="3"/>
+    <text x="55" y="310" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">[CLS]'</text>
+    
+    <rect x="90" y="280" width="40" height="50" fill="url(#patchGrad2)" opacity="0.6" rx="5"/>
+    <rect x="140" y="280" width="40" height="50" fill="url(#patchGrad2)" opacity="0.6" rx="5"/>
+    <rect x="190" y="280" width="40" height="50" fill="url(#patchGrad2)" opacity="0.6" rx="5"/>
+    <text x="250" y="310" font-family="Arial, sans-serif" font-size="14" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">...</text>
+    <rect x="270" y="280" width="40" height="50" fill="url(#patchGrad2)" opacity="0.6" rx="5"/>
+    
+    <text x="55" y="355" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e74c3c" text-anchor="middle" dominant-baseline="middle">Used for</text>
+    <text x="55" y="370" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e74c3c" text-anchor="middle" dominant-baseline="middle">classification</text>
+  </g>
+  
+  <!-- Why CLS token section -->
+  <g>
+    <rect x="380" y="70" width="440" height="280" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"/>
+    <text x="600" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Why [CLS] Token?</text>
+    
+    <rect x="400" y="120" width="400" height="50" fill="#27ae60" rx="5"/>
+    <text x="600" y="140" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">1. Global Image Representation</text>
+    <text x="600" y="158" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle" dominant-baseline="middle">Aggregates information from all patches via self-attention</text>
+    
+    <rect x="400" y="180" width="400" height="50" fill="#3498db" rx="5"/>
+    <text x="600" y="200" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">2. No Spatial Bias</text>
+    <text x="600" y="218" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle" dominant-baseline="middle">Not tied to any specific image location</text>
+    
+    <rect x="400" y="240" width="400" height="50" fill="#9b59b6" rx="5"/>
+    <text x="600" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">3. BERT-style Classification</text>
+    <text x="600" y="278" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle" dominant-baseline="middle">Similar to NLP: use special token for sequence-level tasks</text>
+    
+    <rect x="400" y="300" width="400" height="35" fill="#e67e22" rx="5"/>
+    <text x="600" y="322" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Alternative: Global Average Pooling (GAP)</text>
+  </g>
+</svg>
+

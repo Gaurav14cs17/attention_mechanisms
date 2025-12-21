@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Kernel Attention: Linear Transformer and Performer
+  </text>
+  <text x="450" y="60" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Equations 30-35 from the paper - O(n) complexity through kernel decomposition
+  </text>
+  
+  <!-- Equation 30: Kernel Definition -->
+  <g transform="translate(30, 85)">
+    <rect x="0" y="0" width="400" height="100" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Equation (30): Kernel Definition</text>
+    
+    <text x="200" y="60" font-family="Georgia, serif" font-size="18" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      K(x, y) = phi(x)^T phi(y)
+    </text>
+    
+    <text x="200" y="85" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">phi: feature map, K: kernel function</text>
+  </g>
+  
+  <!-- Equation 31: Attention Rewritten -->
+  <g transform="translate(470, 85)">
+    <rect x="0" y="0" width="400" height="100" rx="12" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Equation (31): Key Insight</text>
+    
+    <text x="200" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      phi(Q_i)^T * Sum_j[phi(K_j) V_j]
+    </text>
+    <text x="200" y="75" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">------------------------</text>
+    <text x="200" y="90" font-family="Georgia, serif" font-size="12" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">
+      phi(Q_i)^T * Sum_j[phi(K_j)]
+    </text>
+  </g>
+  
+  <!-- Equation 32: Vectorized -->
+  <g transform="translate(30, 205)">
+    <rect x="0" y="0" width="840" height="100" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2" filter="url(#shadow)"/>
+    <text x="420" y="25" font-family="Arial" font-size="13" fill="#a78bfa" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Equation (32): Vectorized Form - The Magic!</text>
+    
+    <text x="420" y="60" font-family="Georgia, serif" font-size="18" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      phi(Q) * [phi(K)^T * V]
+    </text>
+    
+    <text x="170" y="85" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">[n x p]</text>
+    <text x="420" y="85" font-family="monospace" font-size="10" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">[p x d] - compute ONCE!</text>
+    <text x="680" y="85" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Result: O(n*p*d) instead of O(n^2*d)</text>
+  </g>
+  
+  <!-- Linear Transformer Feature Map -->
+  <g transform="translate(30, 325)">
+    <rect x="0" y="0" width="400" height="100" rx="12" fill="#1e293b" stroke="#f093fb" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#f093fb" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Equation (33): Linear Transformer</text>
+    
+    <text x="200" y="58" font-family="Georgia, serif" font-size="16" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      phi(x) = elu(x) + 1
+    </text>
+    
+    <text x="200" y="85" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">elu(x) = x if x &gt;= 0, else alpha*(e^x - 1)</text>
+  </g>
+  
+  <!-- Performer Feature Map -->
+  <g transform="translate(470, 325)">
+    <rect x="0" y="0" width="400" height="100" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#fbbf24" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Equation (35): Performer (FAVOR+)</text>
+    
+    <text x="200" y="55" font-family="Georgia, serif" font-size="12" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      phi(x) = exp(-||x||^2/2) / sqrt(2p) *
+    </text>
+    <text x="200" y="75" font-family="Georgia, serif" font-size="11" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">
+      [exp(w_1^T x); ...; exp(-w_p^T x)]
+    </text>
+    
+    <text x="200" y="93" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">w_i ~ N(0, I_d), orthogonal for lower variance</text>
+  </g>
+  
+  <!-- Complexity Comparison -->
+  <g transform="translate(30, 445)">
+    <rect x="0" y="0" width="840" height="85" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="420" y="25" font-family="Arial" font-size="13" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Complexity Comparison</text>
+    
+    <text x="150" y="55" font-family="monospace" font-size="11" fill="#ef4444" text-anchor="middle" dominant-baseline="middle">Standard: O(n^2 * d)</text>
+    <text x="420" y="55" font-family="monospace" font-size="11" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">Linear/Performer: O(n * p * d)</text>
+    <text x="690" y="55" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">p = num features &lt;&lt; n</text>
+    
+    <text x="420" y="75" font-family="monospace" font-size="9" fill="#64748b" text-anchor="middle" dominant-baseline="middle">Trade-off: Approximation quality depends on feature map choice</text>
+  </g>
+</svg>
+

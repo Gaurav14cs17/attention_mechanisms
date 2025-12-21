@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420">
+  <defs>
+    <linearGradient id="learnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#229954"/>
+    </linearGradient>
+    <linearGradient id="sinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <linearGradient id="relGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#8e44ad"/>
+    </linearGradient>
+    <linearGradient id="rotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22"/>
+      <stop offset="100%" style="stop-color:#d35400"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Position Encoding Types in Vision Transformers</text>
+  
+  <!-- Learned Position Embedding -->
+  <g>
+    <rect x="30" y="60" width="200" height="340" fill="url(#learnGrad)" rx="10"/>
+    <text x="130" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Learned Position</text>
+    <text x="130" y="110" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Embedding</text>
+    
+    <rect x="45" y="130" width="170" height="100" fill="white" opacity="0.95" rx="5"/>
+    <text x="130" y="155" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#229954" text-anchor="middle" dominant-baseline="middle">Used in: ViT, DeiT</text>
+    <text x="130" y="180" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">E_pos is learnable</text>
+    <text x="130" y="200" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Shape: (N+1) x D</text>
+    <text x="130" y="220" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Added to patch embed</text>
+    
+    <rect x="45" y="240" width="170" height="70" fill="rgba(255,255,255,0.3)" rx="5"/>
+    <text x="130" y="260" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Pros:</text>
+    <text x="130" y="278" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Simple, flexible</text>
+    <text x="130" y="296" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Works well in practice</text>
+    
+    <rect x="45" y="320" width="170" height="60" fill="rgba(0,0,0,0.2)" rx="5"/>
+    <text x="130" y="340" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Cons:</text>
+    <text x="130" y="358" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Fixed resolution</text>
+    <text x="130" y="373" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Interpolation needed</text>
+  </g>
+  
+  <!-- Sinusoidal Position Encoding -->
+  <g>
+    <rect x="250" y="60" width="200" height="340" fill="url(#sinGrad)" rx="10"/>
+    <text x="350" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Sinusoidal</text>
+    <text x="350" y="110" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Encoding</text>
+    
+    <rect x="265" y="130" width="170" height="100" fill="white" opacity="0.95" rx="5"/>
+    <text x="350" y="155" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Original Transformer</text>
+    <text x="350" y="180" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">PE(pos,2i) = sin(...)</text>
+    <text x="350" y="200" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">PE(pos,2i+1) = cos(...)</text>
+    <text x="350" y="220" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Fixed, not learned</text>
+    
+    <rect x="265" y="240" width="170" height="70" fill="rgba(255,255,255,0.3)" rx="5"/>
+    <text x="350" y="260" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Pros:</text>
+    <text x="350" y="278" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Generalizes to any length</text>
+    <text x="350" y="296" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">No extra parameters</text>
+    
+    <rect x="265" y="320" width="170" height="60" fill="rgba(0,0,0,0.2)" rx="5"/>
+    <text x="350" y="340" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Cons:</text>
+    <text x="350" y="358" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Not adaptive</text>
+    <text x="350" y="373" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">1D, needs 2D extension</text>
+  </g>
+  
+  <!-- Relative Position Bias -->
+  <g>
+    <rect x="470" y="60" width="200" height="340" fill="url(#relGrad)" rx="10"/>
+    <text x="570" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Relative Position</text>
+    <text x="570" y="110" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Bias</text>
+    
+    <rect x="485" y="130" width="170" height="100" fill="white" opacity="0.95" rx="5"/>
+    <text x="570" y="155" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#8e44ad" text-anchor="middle" dominant-baseline="middle">Used in: Swin, Swin V2</text>
+    <text x="570" y="180" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">B = bias table</text>
+    <text x="570" y="200" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Added to QK^T</text>
+    <text x="570" y="220" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Distance-based</text>
+    
+    <rect x="485" y="240" width="170" height="70" fill="rgba(255,255,255,0.3)" rx="5"/>
+    <text x="570" y="260" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Pros:</text>
+    <text x="570" y="278" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Better for local patterns</text>
+    <text x="570" y="296" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Flexible window sizes</text>
+    
+    <rect x="485" y="320" width="170" height="60" fill="rgba(0,0,0,0.2)" rx="5"/>
+    <text x="570" y="340" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Cons:</text>
+    <text x="570" y="358" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">More complex</text>
+    <text x="570" y="373" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Interpolation for scaling</text>
+  </g>
+  
+  <!-- Rotary Position (RoPE) -->
+  <g>
+    <rect x="690" y="60" width="180" height="340" fill="url(#rotGrad)" rx="10"/>
+    <text x="780" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">RoPE / 2D RoPE</text>
+    
+    <rect x="705" y="130" width="150" height="100" fill="white" opacity="0.95" rx="5"/>
+    <text x="780" y="155" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#d35400" text-anchor="middle" dominant-baseline="middle">Modern ViTs</text>
+    <text x="780" y="180" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Rotary embeddings</text>
+    <text x="780" y="200" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Applied to Q, K</text>
+    <text x="780" y="220" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Position in rotation</text>
+    
+    <rect x="705" y="240" width="150" height="70" fill="rgba(255,255,255,0.3)" rx="5"/>
+    <text x="780" y="260" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Pros:</text>
+    <text x="780" y="278" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Relative + absolute</text>
+    <text x="780" y="296" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Length extrapolation</text>
+    
+    <rect x="705" y="320" width="150" height="60" fill="rgba(0,0,0,0.2)" rx="5"/>
+    <text x="780" y="340" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Cons:</text>
+    <text x="780" y="358" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Implementation</text>
+    <text x="780" y="373" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">complexity</text>
+  </g>
+</svg>
+

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Memory-Based Architectures (Paper Section 4.3)
+  </text>
+  
+  <!-- Transformer-XL -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="400" height="380" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="14" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Transformer-XL (Dai et al.)</text>
+    <text x="200" y="45" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Segment-based recurrence</text>
+    
+    <!-- Diagram -->
+    <g transform="translate(30, 70)">
+      <!-- Previous window (fixed, no gradient) -->
+      <rect x="0" y="0" width="100" height="50" rx="6" fill="#64748b" opacity="0.5"/>
+      <text x="50" y="20" font-family="Arial" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Previous</text>
+      <text x="50" y="35" font-family="Arial" font-size="9" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Window</text>
+      <text x="50" y="55" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">(no gradient)</text>
+      
+      <!-- Current window -->
+      <rect x="120" y="0" width="100" height="50" rx="6" fill="#4facfe"/>
+      <text x="170" y="20" font-family="Arial" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Current</text>
+      <text x="170" y="35" font-family="Arial" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Window</text>
+      
+      <!-- FIFO Memory -->
+      <rect x="240" y="0" width="100" height="50" rx="6" fill="#0f172a" stroke="#4facfe" stroke-width="1"/>
+      <text x="290" y="20" font-family="Arial" font-size="9" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">FIFO</text>
+      <text x="290" y="35" font-family="Arial" font-size="9" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">Memory</text>
+      
+      <!-- Arrows -->
+      <path d="M 100 25 L 115 25" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+      <path d="M 220 25 L 235 25" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+    </g>
+    
+    <text x="200" y="165" font-family="Arial" font-size="11" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Key Features:</text>
+    <text x="30" y="190" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- Store previous window representations</text>
+    <text x="30" y="210" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- Current window attends to memory</text>
+    <text x="30" y="230" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- No gradient through memory (fixed)</text>
+    <text x="30" y="250" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- Similar to truncated BPTT</text>
+    
+    <text x="200" y="285" font-family="Arial" font-size="11" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">Result:</text>
+    <text x="30" y="310" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">- 4x greater effective context length</text>
+    <text x="30" y="330" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">- Same parameter budget as vanilla</text>
+    
+    <text x="30" y="360" font-family="monospace" font-size="9" fill="#fbbf24" dominant-baseline="middle">Limitation: Only for autoregressive tasks</text>
+  </g>
+  
+  <!-- Compressive Transformer -->
+  <g transform="translate(470, 70)">
+    <rect x="0" y="0" width="400" height="380" rx="12" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="14" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Compressive Transformer (Rae et al.)</text>
+    <text x="200" y="45" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Extended memory with compression</text>
+    
+    <!-- Diagram -->
+    <g transform="translate(30, 70)">
+      <!-- Compressed Memory -->
+      <rect x="0" y="0" width="70" height="50" rx="6" fill="#a78bfa"/>
+      <text x="35" y="20" font-family="Arial" font-size="8" fill="#fff" text-anchor="middle" dominant-baseline="middle">Compressed</text>
+      <text x="35" y="35" font-family="Arial" font-size="8" fill="#fff" text-anchor="middle" dominant-baseline="middle">Memory</text>
+      
+      <!-- Regular Memory -->
+      <rect x="85" y="0" width="70" height="50" rx="6" fill="#64748b"/>
+      <text x="120" y="20" font-family="Arial" font-size="8" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Regular</text>
+      <text x="120" y="35" font-family="Arial" font-size="8" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Memory</text>
+      
+      <!-- Current -->
+      <rect x="170" y="0" width="70" height="50" rx="6" fill="#43e97b"/>
+      <text x="205" y="20" font-family="Arial" font-size="8" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Current</text>
+      <text x="205" y="35" font-family="Arial" font-size="8" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">Window</text>
+      
+      <!-- Compress function -->
+      <rect x="255" y="0" width="70" height="50" rx="6" fill="#0f172a" stroke="#43e97b" stroke-width="1"/>
+      <text x="290" y="20" font-family="Arial" font-size="8" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">Compress</text>
+      <text x="290" y="35" font-family="Arial" font-size="8" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">Function</text>
+      
+      <!-- Arrows -->
+      <path d="M 70 25 L 80 25" stroke="#94a3b8" stroke-width="1"/>
+      <path d="M 155 25 L 165 25" stroke="#94a3b8" stroke-width="1"/>
+      <path d="M 240 25 L 250 25" stroke="#94a3b8" stroke-width="1"/>
+    </g>
+    
+    <text x="200" y="150" font-family="Arial" font-size="11" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">Compression Functions:</text>
+    <text x="30" y="175" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- Max/Mean pooling</text>
+    <text x="30" y="195" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- 1D convolution</text>
+    <text x="30" y="215" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- Dilated convolutions</text>
+    <text x="30" y="235" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">- Most attended representations</text>
+    
+    <text x="200" y="270" font-family="Arial" font-size="11" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">Auxiliary Loss:</text>
+    <text x="30" y="295" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">L_aux = ||memory - decompress(compressed)||^2</text>
+    
+    <text x="200" y="330" font-family="Arial" font-size="11" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">Result:</text>
+    <text x="30" y="355" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">- Much longer range than Transformer-XL</text>
+    <text x="30" y="375" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">- Better on NLP, comparable on speech</text>
+  </g>
+</svg>
+

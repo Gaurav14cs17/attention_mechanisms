@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+    <linearGradient id="attnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="ffnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="600" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Transformer Architecture: Efficiency Opportunities
+  </text>
+  <text x="450" y="62" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Identifying computational bottlenecks in each component
+  </text>
+  
+  <!-- Input Layer -->
+  <g transform="translate(370, 90)">
+    <rect x="0" y="0" width="160" height="50" rx="10" fill="url(#inputGrad)" filter="url(#shadow)"/>
+    <text x="80" y="30" font-family="Arial" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Input Embeddings</text>
+  </g>
+  <path d="M 450 140 L 450 165" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  
+  <!-- Transformer Block -->
+  <rect x="100" y="175" width="700" height="350" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="450" y="200" font-family="Arial" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Transformer Block (× L layers)</text>
+  
+  <!-- Multi-Head Attention -->
+  <g transform="translate(130, 220)">
+    <rect x="0" y="0" width="280" height="140" rx="12" fill="#0f172a" stroke="url(#attnGrad)" stroke-width="2"/>
+    <rect x="0" y="0" width="280" height="35" rx="12" fill="url(#attnGrad)"/>
+    <rect x="0" y="22" width="280" height="13" fill="url(#attnGrad)"/>
+    <text x="140" y="24" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Multi-Head Attention</text>
+    
+    <!-- Q, K, V -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="50" height="30" rx="4" fill="#f5576c"/>
+      <text x="25" y="19" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">Q</text>
+      
+      <rect x="60" y="0" width="50" height="30" rx="4" fill="#f5576c"/>
+      <text x="85" y="19" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">K</text>
+      
+      <rect x="120" y="0" width="50" height="30" rx="4" fill="#f5576c"/>
+      <text x="145" y="19" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">V</text>
+      
+      <text x="195" y="19" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">→ softmax(QKᵀ)V</text>
+    </g>
+    
+    <text x="20" y="105" font-family="Arial" font-size="10" fill="#ef4444" font-weight="bold" dominant-baseline="middle"> O(N²) complexity!</text>
+    <text x="20" y="125" font-family="monospace" font-size="8" fill="#94a3b8" dominant-baseline="middle">Optimize: Sparse, Linear, Low-rank attention</text>
+  </g>
+  
+  <!-- FFN Layer -->
+  <g transform="translate(490, 220)">
+    <rect x="0" y="0" width="280" height="140" rx="12" fill="#0f172a" stroke="url(#ffnGrad)" stroke-width="2"/>
+    <rect x="0" y="0" width="280" height="35" rx="12" fill="url(#ffnGrad)"/>
+    <rect x="0" y="22" width="280" height="13" fill="url(#ffnGrad)"/>
+    <text x="140" y="24" font-family="Arial" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Feed-Forward Network</text>
+    
+    <text x="20" y="60" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">FFN(x) = W₂ · ReLU(W₁x + b₁) + b₂</text>
+    <text x="20" y="80" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">W₁: d → 4d, W₂: 4d → d</text>
+    
+    <text x="20" y="105" font-family="Arial" font-size="10" fill="#fbbf24" font-weight="bold" dominant-baseline="middle"> 2/3 of total parameters!</text>
+    <text x="20" y="125" font-family="monospace" font-size="8" fill="#94a3b8" dominant-baseline="middle">Optimize: Pruning, Quantization, MoE</text>
+  </g>
+  
+  <!-- Layer Norm + Residual indicators -->
+  <g transform="translate(130, 375)">
+    <rect x="0" y="0" width="640" height="40" rx="8" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <text x="320" y="25" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">+ LayerNorm + Residual Connection (minimal cost)</text>
+  </g>
+  
+  <!-- Embedding Layer info -->
+  <g transform="translate(130, 430)">
+    <rect x="0" y="0" width="640" height="70" rx="8" fill="#0f172a" stroke="#667eea" stroke-width="1"/>
+    <text x="320" y="22" font-family="Arial" font-size="11" fill="#667eea" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Embedding Layers</text>
+    <text x="320" y="42" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Token Embedding: V × H (often 30K × 768 = 23M params)</text>
+    <text x="320" y="58" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Optimize: Factorization (ALBERT), Weight sharing</text>
+  </g>
+  
+  <!-- Output -->
+  <path d="M 450 530 L 450 555" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <g transform="translate(370, 565)">
+    <rect x="0" y="0" width="160" height="30" rx="8" fill="url(#outputGrad)" filter="url(#shadow)"/>
+    <text x="80" y="19" font-family="Arial" font-size="11" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Output</text>
+  </g>
+</svg>
+

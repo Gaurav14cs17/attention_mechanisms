@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550">
+  <defs>
+    <linearGradient id="expertGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#ee5a5a"/>
+    </linearGradient>
+    <linearGradient id="expertGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ecdc4"/>
+      <stop offset="100%" style="stop-color:#44b8b0"/>
+    </linearGradient>
+    <linearGradient id="expertGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a29bfe"/>
+      <stop offset="100%" style="stop-color:#6c5ce7"/>
+    </linearGradient>
+    <linearGradient id="routerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d"/>
+      <stop offset="100%" style="stop-color:#f0c419"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.2" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="550" fill="#0f0f23"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="Arial">Mixture of Experts (MoE) / Switch Transformer</text>
+  <text x="400" y="58" text-anchor="middle" fill="#aaa" font-size="13" font-family="Arial">Conditional Computation: Route each token to specialized experts</text>
+  
+  <!-- Input tokens -->
+  <text x="400" y="95" text-anchor="middle" fill="#4ecdc4" font-size="14" font-weight="bold" font-family="Arial">Input Tokens</text>
+  
+  <g filter="url(#shadow)">
+    <rect x="150" y="110" width="60" height="35" rx="5" fill="#2a2a4a" stroke="#4ecdc4" stroke-width="2"/>
+    <rect x="230" y="110" width="60" height="35" rx="5" fill="#2a2a4a" stroke="#4ecdc4" stroke-width="2"/>
+    <rect x="310" y="110" width="60" height="35" rx="5" fill="#2a2a4a" stroke="#4ecdc4" stroke-width="2"/>
+    <rect x="430" y="110" width="60" height="35" rx="5" fill="#2a2a4a" stroke="#4ecdc4" stroke-width="2"/>
+    <rect x="510" y="110" width="60" height="35" rx="5" fill="#2a2a4a" stroke="#4ecdc4" stroke-width="2"/>
+    <rect x="590" y="110" width="60" height="35" rx="5" fill="#2a2a4a" stroke="#4ecdc4" stroke-width="2"/>
+  </g>
+  
+  <text x="180" y="132" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">The</text>
+  <text x="260" y="132" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">chef</text>
+  <text x="340" y="132" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">cooks</text>
+  <text x="460" y="132" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">a</text>
+  <text x="540" y="132" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">great</text>
+  <text x="620" y="132" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">meal</text>
+  
+  <!-- Router -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="180" width="200" height="50" rx="10" fill="url(#routerGrad)"/>
+    <text x="400" y="210" text-anchor="middle" fill="#000" font-size="16" font-weight="bold" font-family="Arial" dominant-baseline="middle">Router (Gating)</text>
+  </g>
+  
+  <!-- Arrows to router -->
+  <line x1="180" y1="145" x2="320" y2="180" stroke="#ffd93d" stroke-width="1.5"/>
+  <line x1="260" y1="145" x2="350" y2="180" stroke="#ffd93d" stroke-width="1.5"/>
+  <line x1="340" y1="145" x2="380" y2="180" stroke="#ffd93d" stroke-width="1.5"/>
+  <line x1="460" y1="145" x2="420" y2="180" stroke="#ffd93d" stroke-width="1.5"/>
+  <line x1="540" y1="145" x2="450" y2="180" stroke="#ffd93d" stroke-width="1.5"/>
+  <line x1="620" y1="145" x2="480" y2="180" stroke="#ffd93d" stroke-width="1.5"/>
+  
+  <!-- Experts -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="290" width="140" height="80" rx="10" fill="url(#expertGrad1)"/>
+    <text x="170" y="320" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Arial" dominant-baseline="middle">Expert 1</text>
+    <text x="170" y="345" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">(FFN Specialist)</text>
+    <text x="170" y="360" text-anchor="middle" fill="#ffd" font-size="10" font-family="Arial" dominant-baseline="middle">Grammar/Syntax</text>
+  </g>
+  
+  <g filter="url(#shadow)">
+    <rect x="330" y="290" width="140" height="80" rx="10" fill="url(#expertGrad2)"/>
+    <text x="400" y="320" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Arial" dominant-baseline="middle">Expert 2</text>
+    <text x="400" y="345" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">(FFN Specialist)</text>
+    <text x="400" y="360" text-anchor="middle" fill="#ffd" font-size="10" font-family="Arial" dominant-baseline="middle">Entities/Nouns</text>
+  </g>
+  
+  <g filter="url(#shadow)">
+    <rect x="560" y="290" width="140" height="80" rx="10" fill="url(#expertGrad3)"/>
+    <text x="630" y="320" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Arial" dominant-baseline="middle">Expert 3</text>
+    <text x="630" y="345" text-anchor="middle" fill="#fff" font-size="11" font-family="Arial" dominant-baseline="middle">(FFN Specialist)</text>
+    <text x="630" y="360" text-anchor="middle" fill="#ffd" font-size="10" font-family="Arial" dominant-baseline="middle">Actions/Verbs</text>
+  </g>
+  
+  <!-- Routing arrows (colored by expert) -->
+  <path d="M320 230 Q 250 260 170 290" stroke="#ff6b6b" stroke-width="2" fill="none" marker-end="url(#arrowRed)"/>
+  <path d="M380 230 Q 380 260 400 290" stroke="#4ecdc4" stroke-width="2" fill="none" marker-end="url(#arrowTeal)"/>
+  <path d="M420 230 Q 520 260 630 290" stroke="#a29bfe" stroke-width="2" fill="none" marker-end="url(#arrowPurple)"/>
+  
+  <defs>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ff6b6b"/>
+    </marker>
+    <marker id="arrowTeal" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4ecdc4"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#a29bfe"/>
+    </marker>
+  </defs>
+  
+  <!-- Token routing labels -->
+  <text x="220" y="260" fill="#ff6b6b" font-size="10" font-family="Arial">The, a</text>
+  <text x="380" y="265" fill="#4ecdc4" font-size="10" font-family="Arial">chef, meal</text>
+  <text x="520" y="260" fill="#a29bfe" font-size="10" font-family="Arial">cooks, great</text>
+  
+  <!-- Benefits Box -->
+  <rect x="100" y="400" width="280" height="130" rx="10" fill="#1a1a3e" stroke="#4ecdc4" stroke-width="2"/>
+  <text x="240" y="425" text-anchor="middle" fill="#4ecdc4" font-size="14" font-weight="bold" font-family="Arial">Key Benefits</text>
+  <text x="115" y="450" fill="#fff" font-size="11" font-family="Arial">Massive model capacity</text>
+  <text x="115" y="470" fill="#fff" font-size="11" font-family="Arial">Constant compute per token</text>
+  <text x="115" y="490" fill="#fff" font-size="11" font-family="Arial">Scales with # of devices</text>
+  <text x="115" y="510" fill="#fff" font-size="11" font-family="Arial">5x faster to same quality (Switch)</text>
+  
+  <!-- Formula Box -->
+  <rect x="420" y="400" width="280" height="130" rx="10" fill="#1a1a3e" stroke="#ffd93d" stroke-width="2"/>
+  <text x="560" y="425" text-anchor="middle" fill="#ffd93d" font-size="14" font-weight="bold" font-family="Arial">Switch Transformer Routing</text>
+  <text x="560" y="455" text-anchor="middle" fill="#fff" font-size="12" font-family="monospace">g(x) = Softmax(W_r * x)</text>
+  <text x="560" y="480" text-anchor="middle" fill="#fff" font-size="12" font-family="monospace">i = argmax(g(x))</text>
+  <text x="560" y="505" text-anchor="middle" fill="#fff" font-size="12" font-family="monospace">y = g(x)_i * Expert_i(x)</text>
+  <text x="560" y="525" text-anchor="middle" fill="#aaa" font-size="10" font-family="Arial">Only 1 expert per token!</text>
+</svg>
+

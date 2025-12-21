@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380">
+  <defs>
+    <linearGradient id="teacherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="studentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <marker id="arrd" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">DeiT: Data-efficient Training with Distillation</text>
+  
+  <!-- Input Image -->
+  <g>
+    <rect x="50" y="100" width="80" height="80" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    <text x="90" y="200" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Input Image</text>
+  </g>
+  
+  <!-- Teacher CNN -->
+  <g>
+    <rect x="200" y="60" width="150" height="130" fill="url(#teacherGrad)" rx="10"/>
+    <text x="275" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Teacher CNN</text>
+    <text x="275" y="110" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">(RegNetY-16GF)</text>
+    
+    <rect x="215" y="125" width="120" height="50" fill="white" opacity="0.95" rx="5"/>
+    <text x="275" y="145" font-family="Arial, sans-serif" font-size="10" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Pre-trained, frozen</text>
+    <text x="275" y="162" font-family="Arial, sans-serif" font-size="10" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Hard labels</text>
+  </g>
+  
+  <!-- Student ViT -->
+  <g>
+    <rect x="200" y="210" width="150" height="130" fill="url(#studentGrad)" rx="10"/>
+    <text x="275" y="240" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Student DeiT</text>
+    <text x="275" y="260" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">(ViT architecture)</text>
+    
+    <rect x="215" y="275" width="120" height="50" fill="white" opacity="0.95" rx="5"/>
+    <text x="275" y="295" font-family="Arial, sans-serif" font-size="10" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Training from scratch</text>
+    <text x="275" y="312" font-family="Arial, sans-serif" font-size="10" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">ImageNet-1K only</text>
+  </g>
+  
+  <!-- Arrows from input -->
+  <path d="M 135 120 L 195 100" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrd)"/>
+  <path d="M 135 160 L 195 255" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrd)"/>
+  
+  <!-- Token structure -->
+  <g>
+    <rect x="400" y="150" width="200" height="100" fill="#f8f9fa" stroke="#dee2e6" rx="8"/>
+    <text x="500" y="175" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">DeiT Token Structure</text>
+    
+    <rect x="420" y="195" width="50" height="35" fill="#e74c3c" rx="3"/>
+    <text x="445" y="217" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">[CLS]</text>
+    
+    <rect x="475" y="195" width="50" height="35" fill="#27ae60" rx="3"/>
+    <text x="500" y="217" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">[DIST]</text>
+    
+    <rect x="530" y="195" width="50" height="35" fill="#3498db" rx="3"/>
+    <text x="555" y="217" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle" dominant-baseline="middle">Patches</text>
+  </g>
+  
+  <!-- Arrows to token structure -->
+  <path d="M 355 125 L 395 170" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrd)"/>
+  <path d="M 355 275 L 395 215" stroke="#3498db" stroke-width="2" marker-end="url(#arrd)"/>
+  
+  <!-- Loss functions -->
+  <g>
+    <rect x="650" y="80" width="200" height="220" fill="#ecf0f1" stroke="#bdc3c7" rx="10"/>
+    <text x="750" y="110" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Training Losses</text>
+    
+    <rect x="665" y="130" width="170" height="50" fill="#e74c3c" rx="5"/>
+    <text x="750" y="150" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Classification Loss</text>
+    <text x="750" y="168" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle" dominant-baseline="middle">[CLS] vs Ground Truth</text>
+    
+    <rect x="665" y="190" width="170" height="50" fill="#27ae60" rx="5"/>
+    <text x="750" y="210" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Distillation Loss</text>
+    <text x="750" y="228" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.9)" text-anchor="middle" dominant-baseline="middle">[DIST] vs Teacher output</text>
+    
+    <rect x="665" y="250" width="170" height="35" fill="#9b59b6" rx="5"/>
+    <text x="750" y="272" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Total = L_cls + L_dist</text>
+  </g>
+  
+  <!-- Results -->
+  <rect x="300" y="320" width="500" height="45" fill="#f8f9fa" stroke="#dee2e6" rx="8"/>
+  <text x="550" y="348" font-family="Arial, sans-serif" font-size="12" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">DeiT-B achieves 81.8% on ImageNet-1K (vs ViT-B 77.9%) - No JFT-300M needed!</text>
+</svg>
+

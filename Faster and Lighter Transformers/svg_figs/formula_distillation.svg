@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="380" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Knowledge Distillation Formulas
+  </text>
+  
+  <!-- Soft Target Loss -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="350" height="130" rx="12" fill="#1e293b" stroke="#f093fb" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#f093fb" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Soft Target Loss (KD)</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      L_soft = T² · KL(pᵀ || pˢ)
+    </text>
+    
+    <text x="175" y="85" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      pᵀ = softmax(zᵀ/T), pˢ = softmax(zˢ/T)
+    </text>
+    
+    <text x="175" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">T = temperature, higher → softer distribution</text>
+  </g>
+  
+  <!-- Hard Target Loss -->
+  <g transform="translate(420, 70)">
+    <rect x="0" y="0" width="350" height="130" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#4ade80" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Hard Target Loss</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      L_hard = CE(y, pˢ)
+    </text>
+    
+    <text x="175" y="85" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      = -Σ yᵢ log(pˢᵢ)
+    </text>
+    
+    <text x="175" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Standard cross-entropy with labels</text>
+  </g>
+  
+  <!-- Combined Loss -->
+  <g transform="translate(120, 220)">
+    <rect x="0" y="0" width="560" height="130" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="280" y="28" font-family="Arial" font-size="14" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Combined Distillation Loss</text>
+    
+    <text x="280" y="65" font-family="Georgia, serif" font-size="18" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      L = α · L_soft + (1 - α) · L_hard
+    </text>
+    
+    <text x="280" y="100" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      α balances teacher soft targets vs ground truth labels
+    </text>
+    
+    <text x="280" y="120" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+      Typical: α = 0.5, T = 4-20
+    </text>
+  </g>
+</svg>
+

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 500">
+  <defs>
+    <linearGradient id="detGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="segGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#229954"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="475" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Vision Transformers for Downstream Tasks</text>
+  
+  <!-- Object Detection Section -->
+  <g>
+    <rect x="50" y="70" width="420" height="400" rx="10" fill="url(#detGrad)" opacity="0.1"/>
+    <rect x="50" y="70" width="420" height="50" rx="10" fill="url(#detGrad)"/>
+    <text x="260" y="100" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Object Detection</text>
+    
+    <!-- DETR -->
+    <rect x="70" y="140" width="180" height="150" rx="8" fill="white" stroke="#c0392b" stroke-width="2"/>
+    <text x="160" y="165" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">DETR</text>
+    
+    <rect x="85" y="180" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="160" y="197" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">End-to-end detection</text>
+    
+    <rect x="85" y="210" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="160" y="227" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">No NMS, no anchors</text>
+    
+    <rect x="85" y="240" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="160" y="257" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Hungarian matching</text>
+    
+    <!-- Deformable DETR -->
+    <rect x="270" y="140" width="180" height="150" rx="8" fill="white" stroke="#c0392b" stroke-width="2"/>
+    <text x="360" y="165" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Deformable DETR</text>
+    
+    <rect x="285" y="180" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="360" y="197" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Deformable attention</text>
+    
+    <rect x="285" y="210" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="360" y="227" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">10x faster convergence</text>
+    
+    <rect x="285" y="240" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="360" y="257" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Multi-scale features</text>
+    
+    <!-- Detection comparison -->
+    <rect x="70" y="310" width="380" height="140" rx="8" fill="#f8f9fa" stroke="#dee2e6"/>
+    <text x="260" y="335" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Detection Performance (COCO)</text>
+    
+    <text x="120" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Model</text>
+    <text x="220" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Backbone</text>
+    <text x="320" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">AP</text>
+    <text x="400" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Epochs</text>
+    
+    <line x1="80" y1="375" x2="440" y2="375" stroke="#dee2e6" stroke-width="1"/>
+    
+    <text x="120" y="395" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">DETR</text>
+    <text x="220" y="395" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">R50</text>
+    <text x="320" y="395" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">42.0</text>
+    <text x="400" y="395" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">500</text>
+    
+    <text x="120" y="420" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Deformable</text>
+    <text x="220" y="420" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">R50</text>
+    <text x="320" y="420" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">46.2</text>
+    <text x="400" y="420" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">50</text>
+  </g>
+  
+  <!-- Segmentation Section -->
+  <g>
+    <rect x="490" y="70" width="420" height="400" rx="10" fill="url(#segGrad)" opacity="0.1"/>
+    <rect x="490" y="70" width="420" height="50" rx="10" fill="url(#segGrad)"/>
+    <text x="700" y="100" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Image Segmentation</text>
+    
+    <!-- Segmenter -->
+    <rect x="510" y="140" width="180" height="150" rx="8" fill="white" stroke="#229954" stroke-width="2"/>
+    <text x="600" y="165" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#229954" text-anchor="middle" dominant-baseline="middle">Segmenter</text>
+    
+    <rect x="525" y="180" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="600" y="197" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Pure transformer</text>
+    
+    <rect x="525" y="210" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="600" y="227" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Mask transformer</text>
+    
+    <rect x="525" y="240" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="600" y="257" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Linear decoder</text>
+    
+    <!-- Mask2Former -->
+    <rect x="710" y="140" width="180" height="150" rx="8" fill="white" stroke="#229954" stroke-width="2"/>
+    <text x="800" y="165" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#229954" text-anchor="middle" dominant-baseline="middle">Mask2Former</text>
+    
+    <rect x="725" y="180" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="800" y="197" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Unified segmentation</text>
+    
+    <rect x="725" y="210" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="800" y="227" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Masked attention</text>
+    
+    <rect x="725" y="240" width="150" height="25" rx="4" fill="#ecf0f1"/>
+    <text x="800" y="257" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Multi-scale decoder</text>
+    
+    <!-- Segmentation comparison -->
+    <rect x="510" y="310" width="380" height="140" rx="8" fill="#f8f9fa" stroke="#dee2e6"/>
+    <text x="700" y="335" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Segmentation Performance</text>
+    
+    <text x="560" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Model</text>
+    <text x="660" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Task</text>
+    <text x="760" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">mIoU / AP</text>
+    <text x="850" y="365" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Dataset</text>
+    
+    <line x1="520" y1="375" x2="880" y2="375" stroke="#dee2e6" stroke-width="1"/>
+    
+    <text x="560" y="395" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Segmenter</text>
+    <text x="660" y="395" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Semantic</text>
+    <text x="760" y="395" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#229954" text-anchor="middle" dominant-baseline="middle">53.6</text>
+    <text x="850" y="395" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">ADE20K</text>
+    
+    <text x="560" y="420" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Mask2Former</text>
+    <text x="660" y="420" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Panoptic</text>
+    <text x="760" y="420" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#229954" text-anchor="middle" dominant-baseline="middle">57.8</text>
+    <text x="850" y="420" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">COCO</text>
+  </g>
+</svg>
+

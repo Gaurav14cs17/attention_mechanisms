@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="unstructGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="structGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="headGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="layerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="550" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Pruning Methods for Transformers
+  </text>
+  <text x="450" y="62" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Removing redundant weights and components to reduce model size
+  </text>
+  
+  <!-- Two main categories -->
+  <!-- Unstructured Pruning -->
+  <g transform="translate(50, 95)">
+    <rect x="0" y="0" width="400" height="200" rx="14" fill="#1e293b" stroke="url(#unstructGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="400" height="45" rx="14" fill="url(#unstructGrad)"/>
+    <rect x="0" y="30" width="400" height="15" fill="url(#unstructGrad)"/>
+    <text x="200" y="30" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">🎲 Unstructured Pruning</text>
+    
+    <text x="20" y="70" font-family="Arial" font-size="11" fill="#f5576c" font-weight="bold" dominant-baseline="middle">Remove individual weights</text>
+    
+    <!-- Weight matrix visualization -->
+    <g transform="translate(20, 85)">
+      <rect x="0" y="0" width="100" height="80" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <rect x="5" y="5" width="12" height="12" fill="#f5576c"/>
+      <rect x="22" y="5" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="39" y="5" width="12" height="12" fill="#f5576c"/>
+      <rect x="56" y="5" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="73" y="5" width="12" height="12" fill="#f5576c"/>
+      
+      <rect x="5" y="22" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="22" y="22" width="12" height="12" fill="#f5576c"/>
+      <rect x="39" y="22" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="56" y="22" width="12" height="12" fill="#f5576c"/>
+      <rect x="73" y="22" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      
+      <rect x="5" y="39" width="12" height="12" fill="#f5576c"/>
+      <rect x="22" y="39" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="39" y="39" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="56" y="39" width="12" height="12" fill="#f5576c"/>
+      <rect x="73" y="39" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      
+      <rect x="5" y="56" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="22" y="56" width="12" height="12" fill="#f5576c"/>
+      <rect x="39" y="56" width="12" height="12" fill="#f5576c"/>
+      <rect x="56" y="56" width="12" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="73" y="56" width="12" height="12" fill="#f5576c"/>
+      
+      <text x="50" y="95" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Sparse matrix</text>
+    </g>
+    
+    <text x="145" y="105" font-family="Arial" font-size="10" fill="#f5576c" font-weight="bold" dominant-baseline="middle">Criteria</text>
+    <text x="145" y="125" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Magnitude (|w| &lt; ε)</text>
+    <text x="145" y="145" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Movement (Δw direction)</text>
+    <text x="145" y="165" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Lottery Ticket</text>
+    
+    <text x="290" y="105" font-family="Arial" font-size="10" fill="#f5576c" font-weight="bold" dominant-baseline="middle">Challenge</text>
+    <text x="290" y="125" font-family="monospace" font-size="9" fill="#fbbf24" dominant-baseline="middle"> Needs sparse</text>
+    <text x="290" y="145" font-family="monospace" font-size="9" fill="#fbbf24" dominant-baseline="middle">   hardware support</text>
+  </g>
+  
+  <!-- Structured Pruning -->
+  <g transform="translate(50, 310)">
+    <rect x="0" y="0" width="400" height="200" rx="14" fill="#1e293b" stroke="url(#structGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="400" height="45" rx="14" fill="url(#structGrad)"/>
+    <rect x="0" y="30" width="400" height="15" fill="url(#structGrad)"/>
+    <text x="200" y="30" font-family="Arial" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">📐 Structured Pruning</text>
+    
+    <text x="20" y="70" font-family="Arial" font-size="11" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Remove entire structures</text>
+    
+    <!-- Structure visualization -->
+    <g transform="translate(20, 85)">
+      <rect x="0" y="0" width="100" height="80" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      
+      <!-- Full row removed -->
+      <rect x="5" y="5" width="90" height="12" fill="#4facfe"/>
+      <rect x="5" y="22" width="90" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <rect x="5" y="39" width="90" height="12" fill="#4facfe"/>
+      <rect x="5" y="56" width="90" height="12" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      
+      <text x="50" y="95" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Rows/Columns removed</text>
+    </g>
+    
+    <text x="145" y="105" font-family="Arial" font-size="10" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Types</text>
+    <text x="145" y="125" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Head pruning</text>
+    <text x="145" y="145" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Layer pruning</text>
+    <text x="145" y="165" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• FFN dimension</text>
+    
+    <text x="290" y="105" font-family="Arial" font-size="10" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Advantage</text>
+    <text x="290" y="125" font-family="monospace" font-size="9" fill="#4ade80" dominant-baseline="middle">✓ Hardware friendly</text>
+    <text x="290" y="145" font-family="monospace" font-size="9" fill="#4ade80" dominant-baseline="middle">✓ Real speedup</text>
+  </g>
+  
+  <!-- Specific methods on right -->
+  <!-- Head Pruning -->
+  <g transform="translate(480, 95)">
+    <rect x="0" y="0" width="370" height="140" rx="14" fill="#1e293b" stroke="url(#headGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="40" rx="14" fill="url(#headGrad)"/>
+    <rect x="0" y="25" width="370" height="15" fill="url(#headGrad)"/>
+    <text x="185" y="27" font-family="Arial" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Head Pruning</text>
+    
+    <!-- Head visualization -->
+    <g transform="translate(20, 55)">
+      <rect x="0" y="0" width="40" height="30" rx="4" fill="#43e97b"/>
+      <text x="20" y="18" font-family="monospace" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">H1</text>
+      <rect x="50" y="0" width="40" height="30" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+      <text x="70" y="18" font-family="monospace" font-size="9" fill="#64748b" text-anchor="middle" dominant-baseline="middle">H2</text>
+      <rect x="100" y="0" width="40" height="30" rx="4" fill="#43e97b"/>
+      <text x="120" y="18" font-family="monospace" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">H3</text>
+      <rect x="150" y="0" width="40" height="30" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+      <text x="170" y="18" font-family="monospace" font-size="9" fill="#64748b" text-anchor="middle" dominant-baseline="middle">H4</text>
+      <rect x="200" y="0" width="40" height="30" rx="4" fill="#43e97b"/>
+      <text x="220" y="18" font-family="monospace" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">H5</text>
+    </g>
+    
+    <text x="280" y="80" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">Not all heads</text>
+    <text x="280" y="98" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">are equal!</text>
+    
+    <text x="20" y="120" font-family="monospace" font-size="9" fill="#43e97b" dominant-baseline="middle">Methods: Michel et al., Voita et al.</text>
+  </g>
+  
+  <!-- Layer Pruning -->
+  <g transform="translate(480, 255)">
+    <rect x="0" y="0" width="370" height="140" rx="14" fill="#1e293b" stroke="url(#layerGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="40" rx="14" fill="url(#layerGrad)"/>
+    <rect x="0" y="25" width="370" height="15" fill="url(#layerGrad)"/>
+    <text x="185" y="27" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">📚 Layer Pruning</text>
+    
+    <!-- Layer visualization -->
+    <g transform="translate(20, 55)">
+      <rect x="0" y="0" width="60" height="20" rx="3" fill="#a78bfa"/>
+      <text x="30" y="13" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle" dominant-baseline="middle">L12</text>
+      <rect x="0" y="25" width="60" height="20" rx="3" fill="#1e293b" stroke="#64748b" stroke-width="0.5"/>
+      <text x="30" y="38" font-family="monospace" font-size="8" fill="#64748b" text-anchor="middle" dominant-baseline="middle">L11</text>
+      <rect x="0" y="50" width="60" height="20" rx="3" fill="#a78bfa"/>
+      <text x="30" y="63" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle" dominant-baseline="middle">L10</text>
+    </g>
+    
+    <text x="100" y="75" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• LayerDrop (random)</text>
+    <text x="100" y="95" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• DynaBERT (elastic)</text>
+    <text x="100" y="115" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• BERT-of-Theseus</text>
+  </g>
+  
+  <!-- Block Pruning -->
+  <g transform="translate(480, 415)">
+    <rect x="0" y="0" width="370" height="100" rx="14" fill="#1e293b" stroke="#fbbf24" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="370" height="35" rx="14" fill="#fbbf24"/>
+    <rect x="0" y="22" width="370" height="13" fill="#fbbf24"/>
+    <text x="185" y="24" font-family="Arial" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Block Pruning</text>
+    
+    <text x="20" y="60" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• CoFi: Prune heads + FFN together</text>
+    <text x="20" y="80" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Joint structured pruning</text>
+  </g>
+</svg>
+

@@ -1,0 +1,332 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="localGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="globalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="randomGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="combinedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Sparse Attention Patterns
+  </text>
+  <text x="450" y="62" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Different sparsity patterns for efficient attention computation
+  </text>
+  
+  <!-- 1. Full Attention -->
+  <g transform="translate(30, 95)">
+    <rect x="0" y="0" width="160" height="180" rx="14" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="80" y="25" font-family="Arial" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Full Attention</text>
+    <text x="80" y="45" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(N²)</text>
+    
+    <!-- 8x8 grid - all filled -->
+    <g transform="translate(30, 60)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- All cells filled -->
+      <rect x="3" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="3" width="10" height="10" fill="#ef4444"/>
+      
+      <rect x="3" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="15" width="10" height="10" fill="#ef4444"/>
+      
+      <rect x="3" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="27" width="10" height="10" fill="#ef4444"/>
+      
+      <rect x="3" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="39" width="10" height="10" fill="#ef4444"/>
+      
+      <rect x="3" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="51" width="10" height="10" fill="#ef4444"/>
+      
+      <rect x="3" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="63" width="10" height="10" fill="#ef4444"/>
+      
+      <rect x="3" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="75" width="10" height="10" fill="#ef4444"/>
+      
+      <rect x="3" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="87" width="10" height="10" fill="#ef4444"/>
+    </g>
+    
+    <text x="80" y="175" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">100% compute</text>
+  </g>
+  
+  <!-- 2. Local/Window Attention -->
+  <g transform="translate(200, 95)">
+    <rect x="0" y="0" width="160" height="180" rx="14" fill="#1e293b" stroke="url(#localGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <text x="80" y="25" font-family="Arial" font-size="12" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Local Window</text>
+    <text x="80" y="45" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(N × w)</text>
+    
+    <!-- 8x8 grid - diagonal band -->
+    <g transform="translate(30, 60)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- Diagonal band pattern -->
+      <rect x="3" y="3" width="10" height="10" fill="#4facfe"/>
+      <rect x="15" y="3" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="3" width="10" height="10" fill="#4facfe"/>
+      
+      <rect x="3" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="15" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="15" width="10" height="10" fill="#4facfe"/>
+      
+      <rect x="15" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="27" width="10" height="10" fill="#4facfe"/>
+      
+      <rect x="27" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="39" width="10" height="10" fill="#4facfe"/>
+      
+      <rect x="39" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="51" width="10" height="10" fill="#4facfe"/>
+      
+      <rect x="51" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="63" width="10" height="10" fill="#4facfe"/>
+      
+      <rect x="63" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="75" width="10" height="10" fill="#4facfe"/>
+      
+      <rect x="75" y="87" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="87" width="10" height="10" fill="#4facfe"/>
+    </g>
+    
+    <text x="80" y="175" font-family="monospace" font-size="9" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">Longformer</text>
+  </g>
+  
+  <!-- 3. Global Tokens -->
+  <g transform="translate(370, 95)">
+    <rect x="0" y="0" width="160" height="180" rx="14" fill="#1e293b" stroke="url(#globalGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <text x="80" y="25" font-family="Arial" font-size="12" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Global Tokens</text>
+    <text x="80" y="45" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(N × g)</text>
+    
+    <!-- 8x8 grid - first row/column filled -->
+    <g transform="translate(30, 60)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- First row (global token attends to all) -->
+      <rect x="3" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="15" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="27" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="39" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="51" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="63" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="75" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="87" y="3" width="10" height="10" fill="#43e97b"/>
+      
+      <!-- First column (all attend to global) -->
+      <rect x="3" y="15" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="27" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="39" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="51" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="63" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="75" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="87" width="10" height="10" fill="#43e97b"/>
+      
+      <!-- Diagonal for rest -->
+      <rect x="15" y="15" width="10" height="10" fill="#43e97b" opacity="0.4"/>
+      <rect x="27" y="27" width="10" height="10" fill="#43e97b" opacity="0.4"/>
+      <rect x="39" y="39" width="10" height="10" fill="#43e97b" opacity="0.4"/>
+      <rect x="51" y="51" width="10" height="10" fill="#43e97b" opacity="0.4"/>
+      <rect x="63" y="63" width="10" height="10" fill="#43e97b" opacity="0.4"/>
+      <rect x="75" y="75" width="10" height="10" fill="#43e97b" opacity="0.4"/>
+      <rect x="87" y="87" width="10" height="10" fill="#43e97b" opacity="0.4"/>
+    </g>
+    
+    <text x="80" y="175" font-family="monospace" font-size="9" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">[CLS] token</text>
+  </g>
+  
+  <!-- 4. Random -->
+  <g transform="translate(540, 95)">
+    <rect x="0" y="0" width="160" height="180" rx="14" fill="#1e293b" stroke="url(#randomGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <text x="80" y="25" font-family="Arial" font-size="12" fill="#a78bfa" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Random</text>
+    <text x="80" y="45" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(N × r)</text>
+    
+    <!-- 8x8 grid - random pattern -->
+    <g transform="translate(30, 60)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- Random scatter -->
+      <rect x="3" y="3" width="10" height="10" fill="#a78bfa"/>
+      <rect x="51" y="3" width="10" height="10" fill="#a78bfa"/>
+      <rect x="87" y="3" width="10" height="10" fill="#a78bfa"/>
+      
+      <rect x="15" y="15" width="10" height="10" fill="#a78bfa"/>
+      <rect x="63" y="15" width="10" height="10" fill="#a78bfa"/>
+      
+      <rect x="3" y="27" width="10" height="10" fill="#a78bfa"/>
+      <rect x="27" y="27" width="10" height="10" fill="#a78bfa"/>
+      <rect x="75" y="27" width="10" height="10" fill="#a78bfa"/>
+      
+      <rect x="39" y="39" width="10" height="10" fill="#a78bfa"/>
+      <rect x="87" y="39" width="10" height="10" fill="#a78bfa"/>
+      
+      <rect x="15" y="51" width="10" height="10" fill="#a78bfa"/>
+      <rect x="51" y="51" width="10" height="10" fill="#a78bfa"/>
+      
+      <rect x="27" y="63" width="10" height="10" fill="#a78bfa"/>
+      <rect x="63" y="63" width="10" height="10" fill="#a78bfa"/>
+      
+      <rect x="3" y="75" width="10" height="10" fill="#a78bfa"/>
+      <rect x="39" y="75" width="10" height="10" fill="#a78bfa"/>
+      <rect x="75" y="75" width="10" height="10" fill="#a78bfa"/>
+      
+      <rect x="51" y="87" width="10" height="10" fill="#a78bfa"/>
+      <rect x="87" y="87" width="10" height="10" fill="#a78bfa"/>
+    </g>
+    
+    <text x="80" y="175" font-family="monospace" font-size="9" fill="#a78bfa" text-anchor="middle" dominant-baseline="middle">BigBird</text>
+  </g>
+  
+  <!-- 5. Combined (BigBird) -->
+  <g transform="translate(710, 95)">
+    <rect x="0" y="0" width="160" height="180" rx="14" fill="#1e293b" stroke="url(#combinedGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <text x="80" y="25" font-family="Arial" font-size="12" fill="#f5576c" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Combined</text>
+    <text x="80" y="45" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Local+Global+Rand</text>
+    
+    <!-- 8x8 grid - combined pattern -->
+    <g transform="translate(30, 60)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- Global (first row/col) -->
+      <rect x="3" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="15" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="27" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="39" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="51" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="63" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="75" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="87" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="15" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="27" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="39" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="51" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="63" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="75" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="87" width="10" height="10" fill="#43e97b"/>
+      
+      <!-- Local (diagonal band) -->
+      <rect x="15" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="15" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="87" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="87" width="10" height="10" fill="#4facfe"/>
+      
+      <!-- Random (scattered) -->
+      <rect x="63" y="15" width="10" height="10" fill="#a78bfa"/>
+      <rect x="75" y="27" width="10" height="10" fill="#a78bfa"/>
+      <rect x="87" y="39" width="10" height="10" fill="#a78bfa"/>
+      <rect x="15" y="51" width="10" height="10" fill="#a78bfa"/>
+      <rect x="87" y="63" width="10" height="10" fill="#a78bfa"/>
+      <rect x="15" y="75" width="10" height="10" fill="#a78bfa"/>
+    </g>
+    
+    <text x="80" y="175" font-family="monospace" font-size="9" fill="#f5576c" text-anchor="middle" dominant-baseline="middle">BigBird/ETC</text>
+  </g>
+  
+  <!-- Legend -->
+  <rect x="50" y="300" width="800" height="180" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="450" y="330" font-family="Arial" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Sparse Attention Summary</text>
+  
+  <rect x="80" y="350" width="15" height="15" fill="#4facfe" rx="2"/>
+  <text x="110" y="361" font-family="Arial" font-size="11" fill="#4facfe" dominant-baseline="middle">Local Window</text>
+  <text x="110" y="378" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">Each token attends to nearby neighbors</text>
+  
+  <rect x="310" y="350" width="15" height="15" fill="#43e97b" rx="2"/>
+  <text x="340" y="361" font-family="Arial" font-size="11" fill="#43e97b" dominant-baseline="middle">Global Tokens</text>
+  <text x="340" y="378" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">Special tokens attend to all positions</text>
+  
+  <rect x="560" y="350" width="15" height="15" fill="#a78bfa" rx="2"/>
+  <text x="590" y="361" font-family="Arial" font-size="11" fill="#a78bfa" dominant-baseline="middle">Random</text>
+  <text x="590" y="378" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">Sampled random connections</text>
+  
+  <rect x="80" y="410" width="700" height="55" rx="8" fill="#0f172a"/>
+  <text x="430" y="435" font-family="Arial" font-size="11" fill="#f5576c" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Key Insight:</text>
+  <text x="430" y="455" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Combining local + global + random achieves O(N) while maintaining expressiveness</text>
+</svg>
+

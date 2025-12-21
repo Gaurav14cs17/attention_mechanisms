@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="380" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Pruning Formulas
+  </text>
+  
+  <!-- Magnitude Pruning -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="350" height="130" rx="12" fill="#1e293b" stroke="#f5576c" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#f5576c" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Magnitude Pruning</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      mask_ij = 𝟙(|w_ij| &gt; τ)
+    </text>
+    
+    <text x="175" y="85" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      w' = w ⊙ mask
+    </text>
+    
+    <text x="175" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">τ = threshold, prune if |w| &lt; τ</text>
+  </g>
+  
+  <!-- Movement Pruning -->
+  <g transform="translate(420, 70)">
+    <rect x="0" y="0" width="350" height="130" rx="12" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Movement Pruning</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      S_ij = w_ij · ∂L/∂w_ij
+    </text>
+    
+    <text x="175" y="85" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      Prune if movement score S &lt; threshold
+    </text>
+    
+    <text x="175" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Considers gradient direction</text>
+  </g>
+  
+  <!-- Head Importance -->
+  <g transform="translate(120, 220)">
+    <rect x="0" y="0" width="560" height="130" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="280" y="28" font-family="Arial" font-size="14" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Attention Head Importance</text>
+    
+    <text x="280" y="65" font-family="Georgia, serif" font-size="16" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      I_h = E_x [|∂L/∂ξ_h · Attn_h(x)|]
+    </text>
+    
+    <text x="280" y="100" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      ξ_h = learnable mask per head, Attn_h = head output
+    </text>
+    
+    <text x="280" y="120" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+      Prune heads with lowest importance scores
+    </text>
+  </g>
+</svg>
+

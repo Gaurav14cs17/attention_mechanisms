@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <defs>
+    <linearGradient id="fp32Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="int8Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="int4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="binaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="520" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Quantization for Transformers
+  </text>
+  <text x="450" y="62" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Reducing precision to compress model size and speed up inference
+  </text>
+  
+  <!-- Bit width spectrum -->
+  <g transform="translate(50, 90)">
+    <text x="400" y="0" font-family="Arial" font-size="14" fill="#94a3b8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Bit Width Spectrum</text>
+    
+    <!-- FP32 -->
+    <rect x="0" y="20" width="180" height="60" rx="10" fill="url(#fp32Grad)" filter="url(#shadow)"/>
+    <text x="90" y="45" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">FP32</text>
+    <text x="90" y="65" font-family="monospace" font-size="10" fill="#fecaca" text-anchor="middle" dominant-baseline="middle">32 bits • Baseline</text>
+    
+    <!-- Arrow -->
+    <text x="205" y="55" font-family="Arial" font-size="16" fill="#64748b" dominant-baseline="middle">→</text>
+    
+    <!-- INT8 -->
+    <rect x="230" y="20" width="180" height="60" rx="10" fill="url(#int8Grad)" filter="url(#shadow)"/>
+    <text x="320" y="45" font-family="Arial" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">INT8</text>
+    <text x="320" y="65" font-family="monospace" font-size="10" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">8 bits • 4× smaller</text>
+    
+    <!-- Arrow -->
+    <text x="435" y="55" font-family="Arial" font-size="16" fill="#64748b" dominant-baseline="middle">→</text>
+    
+    <!-- INT4 -->
+    <rect x="460" y="20" width="180" height="60" rx="10" fill="url(#int4Grad)" filter="url(#shadow)"/>
+    <text x="550" y="45" font-family="Arial" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">INT4</text>
+    <text x="550" y="65" font-family="monospace" font-size="10" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">4 bits • 8× smaller</text>
+    
+    <!-- Arrow -->
+    <text x="665" y="55" font-family="Arial" font-size="16" fill="#64748b" dominant-baseline="middle">→</text>
+    
+    <!-- Binary -->
+    <rect x="690" y="20" width="110" height="60" rx="10" fill="url(#binaryGrad)" filter="url(#shadow)"/>
+    <text x="745" y="45" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Binary</text>
+    <text x="745" y="65" font-family="monospace" font-size="10" fill="#e9d5ff" text-anchor="middle" dominant-baseline="middle">1 bit • 32×</text>
+  </g>
+  
+  <!-- Two main approaches -->
+  <!-- PTQ -->
+  <g transform="translate(50, 200)">
+    <rect x="0" y="0" width="380" height="280" rx="14" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="380" height="45" rx="14" fill="#4facfe"/>
+    <rect x="0" y="30" width="380" height="15" fill="#4facfe"/>
+    <text x="190" y="30" font-family="Arial" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Post-Training Quantization (PTQ)</text>
+    
+    <text x="20" y="70" font-family="Arial" font-size="12" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Process</text>
+    <text x="20" y="92" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">1. Train model in FP32</text>
+    <text x="20" y="112" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">2. Quantize weights/activations</text>
+    <text x="20" y="132" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">3. Calibrate with small dataset</text>
+    
+    <text x="20" y="162" font-family="Arial" font-size="12" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Advantages</text>
+    <text x="20" y="184" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ No retraining needed</text>
+    <text x="20" y="204" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ Fast to apply</text>
+    <text x="20" y="224" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ Easy to use</text>
+    
+    <text x="20" y="254" font-family="Arial" font-size="12" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Methods</text>
+    <rect x="20" y="264" width="340" height="20" rx="4" fill="#0f172a"/>
+    <text x="190" y="277" font-family="monospace" font-size="9" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">Dynamic Quant, GPTQ, AWQ, SmoothQuant</text>
+  </g>
+  
+  <!-- QAT -->
+  <g transform="translate(470, 200)">
+    <rect x="0" y="0" width="380" height="280" rx="14" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="380" height="45" rx="14" fill="#43e97b"/>
+    <rect x="0" y="30" width="380" height="15" fill="#43e97b"/>
+    <text x="190" y="30" font-family="Arial" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Quantization-Aware Training (QAT)</text>
+    
+    <text x="20" y="70" font-family="Arial" font-size="12" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Process</text>
+    <text x="20" y="92" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">1. Insert fake quantization ops</text>
+    <text x="20" y="112" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">2. Train with quantization noise</text>
+    <text x="20" y="132" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">3. Model learns to be robust</text>
+    
+    <text x="20" y="162" font-family="Arial" font-size="12" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Advantages</text>
+    <text x="20" y="184" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ Better accuracy</text>
+    <text x="20" y="204" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ Works with low bits (4, 2, 1)</text>
+    <text x="20" y="224" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ Learns optimal quantization</text>
+    
+    <text x="20" y="254" font-family="Arial" font-size="12" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Methods</text>
+    <rect x="20" y="264" width="340" height="20" rx="4" fill="#0f172a"/>
+    <text x="190" y="277" font-family="monospace" font-size="9" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">Q-BERT, TernaryBERT, BinaryBERT, I-BERT</text>
+  </g>
+</svg>
+

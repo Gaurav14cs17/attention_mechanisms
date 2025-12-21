@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+  <defs>
+    <linearGradient id="noGateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#74b9ff"/>
+      <stop offset="100%" style="stop-color:#0984e3"/>
+    </linearGradient>
+    <linearGradient id="forgetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a29bfe"/>
+      <stop offset="100%" style="stop-color:#6c5ce7"/>
+    </linearGradient>
+    <linearGradient id="bothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fd79a8"/>
+      <stop offset="100%" style="stop-color:#e84393"/>
+    </linearGradient>
+    <linearGradient id="tttGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffeaa7"/>
+      <stop offset="100%" style="stop-color:#fdcb6e"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1a1a2e" text-anchor="middle" dominant-baseline="middle">Linear Attention Methods by Gate Configuration</text>
+  
+  <!-- Category 1: No Gates -->
+  <g>
+    <rect x="30" y="70" width="200" height="450" rx="10" fill="url(#noGateGrad)" opacity="0.15"/>
+    <rect x="30" y="70" width="200" height="45" rx="10" fill="url(#noGateGrad)"/>
+    <text x="130" y="97" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">No Gates</text>
+    
+    <text x="130" y="135" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Basic linear attention</text>
+    <text x="130" y="150" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Accumulates everything</text>
+    
+    <!-- Methods -->
+    <rect x="50" y="170" width="160" height="35" rx="5" fill="white" stroke="#0984e3"/>
+    <text x="130" y="192" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0984e3" text-anchor="middle" dominant-baseline="middle">Linear Transformer</text>
+    
+    <rect x="50" y="215" width="160" height="35" rx="5" fill="white" stroke="#0984e3"/>
+    <text x="130" y="237" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0984e3" text-anchor="middle" dominant-baseline="middle">Performer</text>
+    
+    <rect x="50" y="260" width="160" height="35" rx="5" fill="white" stroke="#0984e3"/>
+    <text x="130" y="282" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0984e3" text-anchor="middle" dominant-baseline="middle">CHELA</text>
+    
+    <!-- Formula box -->
+    <rect x="45" y="320" width="170" height="60" rx="5" fill="#e8f4fd" stroke="#0984e3"/>
+    <text x="130" y="340" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">H_t = H_{t-1}</text>
+    <text x="130" y="358" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">    + k_t v_t</text>
+    
+    <!-- Characteristics -->
+    <text x="130" y="405" font-family="Arial, sans-serif" font-size="11" fill="#dc3545" text-anchor="middle" dominant-baseline="middle">Cannot forget</text>
+    <text x="130" y="425" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Simple but limited</text>
+  </g>
+  
+  <!-- Category 2: Forget Gate Only -->
+  <g>
+    <rect x="250" y="70" width="200" height="450" rx="10" fill="url(#forgetGrad)" opacity="0.15"/>
+    <rect x="250" y="70" width="200" height="45" rx="10" fill="url(#forgetGrad)"/>
+    <text x="350" y="97" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Forget Gate Only</text>
+    
+    <text x="350" y="135" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Exponential decay</text>
+    <text x="350" y="150" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">of past information</text>
+    
+    <!-- Methods -->
+    <rect x="270" y="170" width="160" height="35" rx="5" fill="white" stroke="#6c5ce7"/>
+    <text x="350" y="192" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#6c5ce7" text-anchor="middle" dominant-baseline="middle">RetNet</text>
+    
+    <rect x="270" y="215" width="160" height="35" rx="5" fill="white" stroke="#6c5ce7"/>
+    <text x="350" y="237" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#6c5ce7" text-anchor="middle" dominant-baseline="middle">HGRN</text>
+    
+    <rect x="270" y="260" width="160" height="35" rx="5" fill="white" stroke="#6c5ce7"/>
+    <text x="350" y="282" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#6c5ce7" text-anchor="middle" dominant-baseline="middle">GLA / Mamba / RWKV</text>
+    
+    <!-- Formula box -->
+    <rect x="265" y="320" width="170" height="60" rx="5" fill="#f3f0ff" stroke="#6c5ce7"/>
+    <text x="350" y="340" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">H_t = G_f * H_{t-1}</text>
+    <text x="350" y="358" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">      + k_t v_t</text>
+    
+    <!-- Characteristics -->
+    <text x="350" y="405" font-family="Arial, sans-serif" font-size="11" fill="#28a745" text-anchor="middle" dominant-baseline="middle">Can forget old info</text>
+    <text x="350" y="425" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">G_f near 0: reset</text>
+    <text x="350" y="445" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">G_f near 1: retain</text>
+  </g>
+  
+  <!-- Category 3: Forget + Select Gates -->
+  <g>
+    <rect x="470" y="70" width="200" height="450" rx="10" fill="url(#bothGrad)" opacity="0.15"/>
+    <rect x="470" y="70" width="200" height="45" rx="10" fill="url(#bothGrad)"/>
+    <text x="570" y="97" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Forget + Select</text>
+    
+    <text x="570" y="135" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Full control over</text>
+    <text x="570" y="150" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">information flow</text>
+    
+    <!-- Methods -->
+    <rect x="490" y="170" width="160" height="35" rx="5" fill="white" stroke="#e84393"/>
+    <text x="570" y="192" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e84393" text-anchor="middle" dominant-baseline="middle">Mamba2</text>
+    
+    <rect x="490" y="215" width="160" height="35" rx="5" fill="white" stroke="#e84393"/>
+    <text x="570" y="237" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e84393" text-anchor="middle" dominant-baseline="middle">xLSTM</text>
+    
+    <rect x="490" y="260" width="160" height="35" rx="5" fill="white" stroke="#e84393"/>
+    <text x="570" y="282" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#e84393" text-anchor="middle" dominant-baseline="middle">DeltaNet</text>
+    
+    <!-- Formula box -->
+    <rect x="485" y="320" width="170" height="60" rx="5" fill="#ffe0eb" stroke="#e84393"/>
+    <text x="570" y="340" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">H_t = G_f * H_{t-1}</text>
+    <text x="570" y="358" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">      + G_s * k_t v_t</text>
+    
+    <!-- Characteristics -->
+    <text x="570" y="405" font-family="Arial, sans-serif" font-size="11" fill="#28a745" text-anchor="middle" dominant-baseline="middle">Most expressive</text>
+    <text x="570" y="425" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Selective input</text>
+    <text x="570" y="445" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Selective forget</text>
+  </g>
+  
+  <!-- Category 4: Test-Time Training -->
+  <g>
+    <rect x="690" y="70" width="180" height="450" rx="10" fill="url(#tttGrad)" opacity="0.15"/>
+    <rect x="690" y="70" width="180" height="45" rx="10" fill="url(#tttGrad)"/>
+    <text x="780" y="97" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#856404" text-anchor="middle" dominant-baseline="middle">Test-Time Training</text>
+    
+    <text x="780" y="135" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Learnable hidden state</text>
+    <text x="780" y="150" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Updated via gradient</text>
+    
+    <!-- Methods -->
+    <rect x="710" y="170" width="140" height="35" rx="5" fill="white" stroke="#d68910"/>
+    <text x="780" y="192" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#d68910" text-anchor="middle" dominant-baseline="middle">TTT-Linear</text>
+    
+    <rect x="710" y="215" width="140" height="35" rx="5" fill="white" stroke="#d68910"/>
+    <text x="780" y="237" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#d68910" text-anchor="middle" dominant-baseline="middle">TTT-MLP</text>
+    
+    <!-- Formula box -->
+    <rect x="705" y="280" width="150" height="80" rx="5" fill="#fef9e7" stroke="#d68910"/>
+    <text x="780" y="300" font-family="monospace" font-size="9" fill="#333" text-anchor="middle" dominant-baseline="middle">o_t = f(x_t; H_t)</text>
+    <text x="780" y="318" font-family="monospace" font-size="9" fill="#333" text-anchor="middle" dominant-baseline="middle">L = loss(o_t, target)</text>
+    <text x="780" y="336" font-family="monospace" font-size="9" fill="#333" text-anchor="middle" dominant-baseline="middle">H_{t+1} = H_t - lr*grad</text>
+    
+    <!-- Characteristics -->
+    <text x="780" y="385" font-family="Arial, sans-serif" font-size="11" fill="#28a745" text-anchor="middle" dominant-baseline="middle">Adapts at inference</text>
+    <text x="780" y="405" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Self-supervised</text>
+    <text x="780" y="425" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Handles drift</text>
+  </g>
+  
+  <!-- Complexity label at bottom -->
+  <text x="450" y="540" font-family="Arial, sans-serif" font-size="14" fill="#495057" text-anchor="middle" dominant-baseline="middle">All methods: O(N) time complexity with O(d^2) memory per step</text>
+</svg>
+

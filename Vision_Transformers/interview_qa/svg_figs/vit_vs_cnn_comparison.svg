@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="cnnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="vitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">ViT vs CNN: Key Differences</text>
+  
+  <!-- CNN Column -->
+  <g>
+    <rect x="50" y="60" width="380" height="370" fill="url(#cnnGrad)" opacity="0.1" rx="10"/>
+    <rect x="50" y="60" width="380" height="50" fill="url(#cnnGrad)" rx="10"/>
+    <text x="240" y="90" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">CNN (ResNet, VGG)</text>
+    
+    <rect x="70" y="125" width="340" height="55" fill="white" rx="5"/>
+    <text x="240" y="145" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Receptive Field</text>
+    <text x="240" y="165" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Local (3x3, 5x5 kernels) - grows with depth</text>
+    
+    <rect x="70" y="190" width="340" height="55" fill="white" rx="5"/>
+    <text x="240" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Inductive Bias</text>
+    <text x="240" y="230" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Strong: translation equivariance, locality</text>
+    
+    <rect x="70" y="255" width="340" height="55" fill="white" rx="5"/>
+    <text x="240" y="275" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Data Efficiency</text>
+    <text x="240" y="295" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Works well with small datasets</text>
+    
+    <rect x="70" y="320" width="340" height="55" fill="white" rx="5"/>
+    <text x="240" y="340" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Scalability</text>
+    <text x="240" y="360" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Limited gains with more data/compute</text>
+    
+    <rect x="70" y="385" width="340" height="35" fill="rgba(192,57,43,0.2)" rx="5"/>
+    <text x="240" y="408" font-family="Arial, sans-serif" font-size="11" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Complexity: O(K² x C_in x C_out x H x W)</text>
+  </g>
+  
+  <!-- ViT Column -->
+  <g>
+    <rect x="470" y="60" width="380" height="370" fill="url(#vitGrad)" opacity="0.1" rx="10"/>
+    <rect x="470" y="60" width="380" height="50" fill="url(#vitGrad)" rx="10"/>
+    <text x="660" y="90" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Vision Transformer (ViT)</text>
+    
+    <rect x="490" y="125" width="340" height="55" fill="white" rx="5"/>
+    <text x="660" y="145" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Receptive Field</text>
+    <text x="660" y="165" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Global from layer 1 (all patches attend)</text>
+    
+    <rect x="490" y="190" width="340" height="55" fill="white" rx="5"/>
+    <text x="660" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Inductive Bias</text>
+    <text x="660" y="230" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Minimal: only patch structure, learned positions</text>
+    
+    <rect x="490" y="255" width="340" height="55" fill="white" rx="5"/>
+    <text x="660" y="275" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Data Efficiency</text>
+    <text x="660" y="295" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Requires large datasets (JFT-300M, ImageNet-21K)</text>
+    
+    <rect x="490" y="320" width="340" height="55" fill="white" rx="5"/>
+    <text x="660" y="340" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Scalability</text>
+    <text x="660" y="360" font-family="Arial, sans-serif" font-size="11" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Scales extremely well with data and model size</text>
+    
+    <rect x="490" y="385" width="340" height="35" fill="rgba(41,128,185,0.2)" rx="5"/>
+    <text x="660" y="408" font-family="Arial, sans-serif" font-size="11" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Complexity: O(N² x D) where N = patches</text>
+  </g>
+</svg>
+

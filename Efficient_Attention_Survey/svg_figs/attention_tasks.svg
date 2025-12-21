@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 520">
+  <defs>
+    <linearGradient id="bertGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="trainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="inferGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="475" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1a1a2e" text-anchor="middle" dominant-baseline="middle">Attention in Different Tasks</text>
+  
+  <!-- Task 1: Non-Autoregressive (BERT, ViT) -->
+  <g>
+    <rect x="30" y="70" width="280" height="420" rx="12" fill="url(#bertGrad)" opacity="0.15"/>
+    <rect x="30" y="70" width="280" height="50" rx="12" ry="0" fill="url(#bertGrad)"/>
+    <text x="170" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Non-Autoregressive</text>
+    
+    <text x="170" y="140" font-family="Arial, sans-serif" font-size="13" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">BERT, Vision Transformer</text>
+    
+    <!-- Full attention matrix -->
+    <rect x="70" y="160" width="140" height="140" fill="none" stroke="#667eea" stroke-width="2"/>
+    <text x="140" y="230" font-family="Arial, sans-serif" font-size="11" fill="#667eea" text-anchor="middle" dominant-baseline="middle">Full N x N</text>
+    <text x="140" y="245" font-family="Arial, sans-serif" font-size="11" fill="#667eea" text-anchor="middle" dominant-baseline="middle">Attention</text>
+    
+    <!-- Fill to show all attend to all -->
+    <rect x="75" y="165" width="130" height="130" fill="#667eea" opacity="0.3"/>
+    
+    <!-- Formula -->
+    <rect x="50" y="320" width="180" height="50" rx="5" fill="white" stroke="#667eea" stroke-width="1"/>
+    <text x="140" y="350" font-family="monospace" font-size="11" fill="#333" text-anchor="middle" dominant-baseline="middle">O = softmax(QK'/sqrt(d))V</text>
+    
+    <!-- Properties -->
+    <text x="170" y="395" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#495057" text-anchor="middle" dominant-baseline="middle">Properties:</text>
+    <text x="170" y="415" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">- All tokens attend to all</text>
+    <text x="170" y="435" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">- Parallel computation</text>
+    <text x="170" y="455" font-family="Arial, sans-serif" font-size="11" fill="#28a745" text-anchor="middle" dominant-baseline="middle">Compute-bound</text>
+  </g>
+  
+  <!-- Task 2: LLM Training (Causal) -->
+  <g>
+    <rect x="335" y="70" width="280" height="420" rx="12" fill="url(#trainGrad)" opacity="0.15"/>
+    <rect x="335" y="70" width="280" height="50" rx="12" ry="0" fill="url(#trainGrad)"/>
+    <text x="475" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">LLM Training</text>
+    
+    <text x="475" y="140" font-family="Arial, sans-serif" font-size="13" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">GPT, LLaMA (Training)</text>
+    
+    <!-- Causal mask attention matrix -->
+    <rect x="375" y="160" width="140" height="140" fill="none" stroke="#f5576c" stroke-width="2"/>
+    <text x="445" y="230" font-family="Arial, sans-serif" font-size="11" fill="#f5576c" text-anchor="middle" dominant-baseline="middle">Causal Mask</text>
+    <text x="445" y="245" font-family="Arial, sans-serif" font-size="11" fill="#f5576c" text-anchor="middle" dominant-baseline="middle">Lower Tri</text>
+    
+    <!-- Lower triangular fill -->
+    <polygon points="380,165 380,295 510,295" fill="#f5576c" opacity="0.3"/>
+    
+    <!-- Formula -->
+    <rect x="350" y="320" width="200" height="50" rx="5" fill="white" stroke="#f5576c" stroke-width="1"/>
+    <text x="450" y="340" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">O = softmax(QK'/sqrt(d) + M)V</text>
+    <text x="450" y="358" font-family="monospace" font-size="9" fill="#888" text-anchor="middle" dominant-baseline="middle">M[i,j] = 0 if j&lt;=i, else -inf</text>
+    
+    <!-- Properties -->
+    <text x="475" y="395" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#495057" text-anchor="middle" dominant-baseline="middle">Properties:</text>
+    <text x="475" y="415" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">- Tokens attend to past only</text>
+    <text x="475" y="435" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">- Causal mask applied</text>
+    <text x="475" y="455" font-family="Arial, sans-serif" font-size="11" fill="#28a745" text-anchor="middle" dominant-baseline="middle">Compute-bound</text>
+  </g>
+  
+  <!-- Task 3: LLM Inference -->
+  <g>
+    <rect x="640" y="70" width="280" height="420" rx="12" fill="url(#inferGrad)" opacity="0.15"/>
+    <rect x="640" y="70" width="280" height="50" rx="12" ry="0" fill="url(#inferGrad)"/>
+    <text x="780" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">LLM Inference</text>
+    
+    <text x="780" y="140" font-family="Arial, sans-serif" font-size="13" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Two Phases</text>
+    
+    <!-- Two phase boxes -->
+    <rect x="660" y="160" width="100" height="80" rx="5" fill="#4facfe" opacity="0.3" stroke="#4facfe"/>
+    <text x="710" y="190" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#0077b6" text-anchor="middle" dominant-baseline="middle">Prefilling</text>
+    <text x="710" y="210" font-family="Arial, sans-serif" font-size="9" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Process prompt</text>
+    <text x="710" y="225" font-family="Arial, sans-serif" font-size="9" fill="#28a745" text-anchor="middle" dominant-baseline="middle">Compute-bound</text>
+    
+    <rect x="800" y="160" width="100" height="80" rx="5" fill="#00f2fe" opacity="0.3" stroke="#00f2fe"/>
+    <text x="850" y="190" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#0077b6" text-anchor="middle" dominant-baseline="middle">Decoding</text>
+    <text x="850" y="210" font-family="Arial, sans-serif" font-size="9" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">Generate tokens</text>
+    <text x="850" y="225" font-family="Arial, sans-serif" font-size="9" fill="#dc3545" text-anchor="middle" dominant-baseline="middle">Memory-bound</text>
+    
+    <!-- Arrow between phases -->
+    <path d="M 765 200 L 795 200" stroke="#495057" stroke-width="2" marker-end="url(#arrow)"/>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#495057"/>
+      </marker>
+    </defs>
+    
+    <!-- KV Cache box -->
+    <rect x="680" y="260" width="200" height="45" rx="5" fill="#fff3cd" stroke="#ffc107"/>
+    <text x="780" y="285" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#856404" text-anchor="middle" dominant-baseline="middle">KV Cache: Store K,V for reuse</text>
+    
+    <!-- Formula -->
+    <rect x="660" y="320" width="200" height="50" rx="5" fill="white" stroke="#4facfe" stroke-width="1"/>
+    <text x="760" y="340" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">o = softmax(q(K||k)'/sqrt(d))</text>
+    <text x="760" y="358" font-family="monospace" font-size="10" fill="#333" text-anchor="middle" dominant-baseline="middle">    * (V||v)</text>
+    
+    <!-- Properties -->
+    <text x="780" y="395" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#495057" text-anchor="middle" dominant-baseline="middle">Properties:</text>
+    <text x="780" y="415" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">- One token at a time</text>
+    <text x="780" y="435" font-family="Arial, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle" dominant-baseline="middle">- Reuses cached K, V</text>
+    <text x="780" y="455" font-family="Arial, sans-serif" font-size="11" fill="#dc3545" text-anchor="middle" dominant-baseline="middle">I/O dominates (KV read)</text>
+  </g>
+</svg>
+

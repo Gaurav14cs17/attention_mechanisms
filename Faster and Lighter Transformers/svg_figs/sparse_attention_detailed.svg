@@ -1,0 +1,330 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="650" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="500" y="35" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Sparse Attention Patterns (From Paper Figures 11-17)
+  </text>
+  
+  <!-- Full Attention -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="180" height="200" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="90" y="25" font-family="Arial" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Full Attention</text>
+    <text x="90" y="42" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(n^2)</text>
+    
+    <!-- 8x8 grid all filled -->
+    <g transform="translate(40, 55)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- All cells filled -->
+      <rect x="3" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="3" width="10" height="10" fill="#ef4444"/>
+      <rect x="3" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="15" width="10" height="10" fill="#ef4444"/>
+      <rect x="3" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="27" width="10" height="10" fill="#ef4444"/>
+      <rect x="3" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="39" width="10" height="10" fill="#ef4444"/>
+      <rect x="3" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="51" width="10" height="10" fill="#ef4444"/>
+      <rect x="3" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="63" width="10" height="10" fill="#ef4444"/>
+      <rect x="3" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="75" width="10" height="10" fill="#ef4444"/>
+      <rect x="3" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="15" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="27" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="39" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="51" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="63" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="75" y="87" width="10" height="10" fill="#ef4444"/>
+      <rect x="87" y="87" width="10" height="10" fill="#ef4444"/>
+    </g>
+    <text x="90" y="175" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Fig 5: Every position</text>
+    <text x="90" y="190" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">attends to all</text>
+  </g>
+  
+  <!-- Sliding Window (Longformer) -->
+  <g transform="translate(230, 70)">
+    <rect x="0" y="0" width="180" height="200" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="90" y="25" font-family="Arial" font-size="12" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Sliding Window</text>
+    <text x="90" y="42" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(n*w) - Longformer</text>
+    
+    <!-- Diagonal band pattern -->
+    <g transform="translate(40, 55)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <rect x="3" y="3" width="10" height="10" fill="#4facfe"/>
+      <rect x="15" y="3" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="3" width="10" height="10" fill="#4facfe"/>
+      <rect x="3" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="15" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="15" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="87" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="87" width="10" height="10" fill="#4facfe"/>
+    </g>
+    <text x="90" y="175" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Fig 15: Local</text>
+    <text x="90" y="190" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">neighborhood only</text>
+  </g>
+  
+  <!-- Global + Local (Longformer) -->
+  <g transform="translate(430, 70)">
+    <rect x="0" y="0" width="180" height="200" rx="12" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="90" y="25" font-family="Arial" font-size="12" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Global + Local</text>
+    <text x="90" y="42" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(n) - Longformer</text>
+    
+    <g transform="translate(40, 55)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- Global tokens (first row/col) -->
+      <rect x="3" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="15" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="27" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="39" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="51" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="63" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="75" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="87" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="15" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="27" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="39" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="51" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="63" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="75" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="87" width="10" height="10" fill="#43e97b"/>
+      <!-- Local window -->
+      <rect x="15" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="87" width="10" height="10" fill="#4facfe"/>
+    </g>
+    <text x="90" y="175" font-family="monospace" font-size="9" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">Fig 15: Global tokens</text>
+    <text x="90" y="190" font-family="monospace" font-size="9" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">+ sliding window</text>
+  </g>
+  
+  <!-- BigBird -->
+  <g transform="translate(630, 70)">
+    <rect x="0" y="0" width="180" height="200" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2" filter="url(#shadow)"/>
+    <text x="90" y="25" font-family="Arial" font-size="12" fill="#a78bfa" text-anchor="middle" font-weight="bold" dominant-baseline="middle">BigBird</text>
+    <text x="90" y="42" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(n) - Global+Local+Random</text>
+    
+    <g transform="translate(40, 55)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- Global -->
+      <rect x="3" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="15" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="27" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="39" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="51" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="63" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="75" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="87" y="3" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="15" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="27" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="39" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="51" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="63" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="75" width="10" height="10" fill="#43e97b"/>
+      <rect x="3" y="87" width="10" height="10" fill="#43e97b"/>
+      <!-- Local -->
+      <rect x="15" y="15" width="10" height="10" fill="#4facfe"/>
+      <rect x="27" y="27" width="10" height="10" fill="#4facfe"/>
+      <rect x="39" y="39" width="10" height="10" fill="#4facfe"/>
+      <rect x="51" y="51" width="10" height="10" fill="#4facfe"/>
+      <rect x="63" y="63" width="10" height="10" fill="#4facfe"/>
+      <rect x="75" y="75" width="10" height="10" fill="#4facfe"/>
+      <rect x="87" y="87" width="10" height="10" fill="#4facfe"/>
+      <!-- Random -->
+      <rect x="51" y="15" width="10" height="10" fill="#f59e0b"/>
+      <rect x="75" y="27" width="10" height="10" fill="#f59e0b"/>
+      <rect x="27" y="51" width="10" height="10" fill="#f59e0b"/>
+      <rect x="87" y="63" width="10" height="10" fill="#f59e0b"/>
+      <rect x="39" y="75" width="10" height="10" fill="#f59e0b"/>
+    </g>
+    <text x="90" y="175" font-family="monospace" font-size="9" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">Global</text>
+    <text x="90" y="188" font-family="monospace" font-size="9" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">+ Local + </text>
+    <text x="135" y="188" font-family="monospace" font-size="9" fill="#f59e0b" dominant-baseline="middle">Random</text>
+  </g>
+  
+  <!-- LSH Buckets (Reformer) -->
+  <g transform="translate(830, 70)">
+    <rect x="0" y="0" width="150" height="200" rx="12" fill="#1e293b" stroke="#f093fb" stroke-width="2" filter="url(#shadow)"/>
+    <text x="75" y="25" font-family="Arial" font-size="11" fill="#f093fb" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Reformer</text>
+    <text x="75" y="42" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">O(n log n) - LSH</text>
+    
+    <g transform="translate(25, 55)">
+      <rect x="0" y="0" width="100" height="100" rx="4" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+      <!-- Buckets - same color = same bucket -->
+      <rect x="3" y="3" width="10" height="10" fill="#f093fb"/>
+      <rect x="15" y="3" width="10" height="10" fill="#f093fb"/>
+      <rect x="3" y="15" width="10" height="10" fill="#f093fb"/>
+      <rect x="15" y="15" width="10" height="10" fill="#f093fb"/>
+      
+      <rect x="27" y="27" width="10" height="10" fill="#4ade80"/>
+      <rect x="39" y="27" width="10" height="10" fill="#4ade80"/>
+      <rect x="51" y="27" width="10" height="10" fill="#4ade80"/>
+      <rect x="27" y="39" width="10" height="10" fill="#4ade80"/>
+      <rect x="39" y="39" width="10" height="10" fill="#4ade80"/>
+      <rect x="51" y="39" width="10" height="10" fill="#4ade80"/>
+      <rect x="27" y="51" width="10" height="10" fill="#4ade80"/>
+      <rect x="39" y="51" width="10" height="10" fill="#4ade80"/>
+      <rect x="51" y="51" width="10" height="10" fill="#4ade80"/>
+      
+      <rect x="63" y="63" width="10" height="10" fill="#fbbf24"/>
+      <rect x="75" y="63" width="10" height="10" fill="#fbbf24"/>
+      <rect x="87" y="63" width="10" height="10" fill="#fbbf24"/>
+      <rect x="63" y="75" width="10" height="10" fill="#fbbf24"/>
+      <rect x="75" y="75" width="10" height="10" fill="#fbbf24"/>
+      <rect x="87" y="75" width="10" height="10" fill="#fbbf24"/>
+      <rect x="63" y="87" width="10" height="10" fill="#fbbf24"/>
+      <rect x="75" y="87" width="10" height="10" fill="#fbbf24"/>
+      <rect x="87" y="87" width="10" height="10" fill="#fbbf24"/>
+    </g>
+    <text x="75" y="175" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Fig 17: Same-bucket</text>
+    <text x="75" y="190" font-family="monospace" font-size="8" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">positions only</text>
+  </g>
+  
+  <!-- Reformer Equations -->
+  <g transform="translate(30, 290)">
+    <rect x="0" y="0" width="450" height="130" rx="12" fill="#1e293b" stroke="#f093fb" stroke-width="2" filter="url(#shadow)"/>
+    <text x="225" y="25" font-family="Arial" font-size="13" fill="#f093fb" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Reformer LSH (Equations 20-21)</text>
+    
+    <text x="225" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      p = [x^T R; -x^T R]
+    </text>
+    <text x="225" y="80" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      h(x) = argmax_i(p_i)
+    </text>
+    <text x="225" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">R: random rotation matrix, h: hash function</text>
+  </g>
+  
+  <!-- Adaptively Sparse (alpha-entmax) -->
+  <g transform="translate(520, 290)">
+    <rect x="0" y="0" width="450" height="130" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2" filter="url(#shadow)"/>
+    <text x="225" y="25" font-family="Arial" font-size="13" fill="#fbbf24" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Adaptively Sparse (Equations 16-19)</text>
+    
+    <text x="225" y="55" font-family="Georgia, serif" font-size="13" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      alpha-entmax(z) = argmax_p [p^T z + H_alpha(p)]
+    </text>
+    <text x="225" y="80" font-family="Georgia, serif" font-size="12" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">
+      alpha = 1 + sigmoid(a) in (1, 2)
+    </text>
+    <text x="225" y="115" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">alpha=1: Softmax (dense), alpha&gt;1: sparse output</text>
+  </g>
+  
+  <!-- Legend and Summary -->
+  <g transform="translate(30, 450)">
+    <rect x="0" y="0" width="940" height="180" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="470" y="25" font-family="Arial" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Sparse Attention Summary (from Paper Section 4.1)</text>
+    
+    <!-- Legend -->
+    <rect x="30" y="50" width="15" height="15" rx="2" fill="#43e97b"/>
+    <text x="55" y="60" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">Global: special tokens attend to all</text>
+    
+    <rect x="280" y="50" width="15" height="15" rx="2" fill="#4facfe"/>
+    <text x="305" y="60" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">Local: sliding window attention</text>
+    
+    <rect x="520" y="50" width="15" height="15" rx="2" fill="#f59e0b"/>
+    <text x="545" y="60" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">Random: sampled connections</text>
+    
+    <rect x="760" y="50" width="15" height="15" rx="2" fill="#f093fb"/>
+    <text x="785" y="60" font-family="monospace" font-size="10" fill="#e2e8f0" dominant-baseline="middle">LSH buckets</text>
+    
+    <!-- Complexity table -->
+    <text x="100" y="95" font-family="monospace" font-size="10" fill="#ef4444" text-anchor="middle" dominant-baseline="middle">Full: O(n^2)</text>
+    <text x="280" y="95" font-family="monospace" font-size="10" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">Longformer: O(n)</text>
+    <text x="470" y="95" font-family="monospace" font-size="10" fill="#a78bfa" text-anchor="middle" dominant-baseline="middle">BigBird: O(n)</text>
+    <text x="660" y="95" font-family="monospace" font-size="10" fill="#f093fb" text-anchor="middle" dominant-baseline="middle">Reformer: O(n log n)</text>
+    <text x="840" y="95" font-family="monospace" font-size="10" fill="#fbbf24" text-anchor="middle" dominant-baseline="middle">Sinkhorn: O(n)</text>
+    
+    <text x="470" y="130" font-family="Arial" font-size="11" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      Key insight: Most attention weights are small. Sparse patterns exploit this to reduce complexity.
+    </text>
+    <text x="470" y="155" font-family="monospace" font-size="9" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+      BigBird preserves theoretical properties: universal approximator + Turing complete (Zaheer et al.)
+    </text>
+  </g>
+</svg>
+

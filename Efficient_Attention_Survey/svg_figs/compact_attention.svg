@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480">
+  <defs>
+    <linearGradient id="compressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <linearGradient id="kGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <linearGradient id="vGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#0ea5e9"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="480" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="26" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Compact Attention: KV Cache Compression
+  </text>
+  <text x="450" y="65" font-family="monospace" font-size="12" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Reducing memory through weight sharing and low-rank decomposition
+  </text>
+  
+  <!-- Left: Full KV Cache -->
+  <rect x="30" y="90" width="380" height="340" rx="14" fill="#1e293b" stroke="#64748b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="220" y="120" font-family="Arial" font-size="16" fill="#64748b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Standard: Full KV Cache</text>
+  
+  <text x="55" y="155" font-family="monospace" font-size="11" fill="#94a3b8" dominant-baseline="middle">Multi-Head Attention (MHA)</text>
+  <text x="55" y="175" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">Each head has its own K, V</text>
+  
+  <!-- Heads visualization -->
+  <g transform="translate(50, 195)">
+    <rect x="0" y="0" width="40" height="70" rx="4" fill="url(#kGrad)" opacity="0.9"/>
+    <text x="20" y="38" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">K₁</text>
+    <rect x="45" y="0" width="40" height="70" rx="4" fill="url(#vGrad)" opacity="0.9"/>
+    <text x="65" y="38" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">V₁</text>
+    
+    <rect x="95" y="0" width="40" height="70" rx="4" fill="url(#kGrad)" opacity="0.9"/>
+    <text x="115" y="38" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">K₂</text>
+    <rect x="140" y="0" width="40" height="70" rx="4" fill="url(#vGrad)" opacity="0.9"/>
+    <text x="160" y="38" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">V₂</text>
+    
+    <text x="205" y="38" font-family="Arial" font-size="18" fill="#64748b" dominant-baseline="middle">···</text>
+    
+    <rect x="235" y="0" width="40" height="70" rx="4" fill="url(#kGrad)" opacity="0.9"/>
+    <text x="255" y="38" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">Kₕ</text>
+    <rect x="280" y="0" width="40" height="70" rx="4" fill="url(#vGrad)" opacity="0.9"/>
+    <text x="300" y="38" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">Vₕ</text>
+  </g>
+  
+  <!-- Memory size -->
+  <rect x="50" y="290" width="320" height="50" rx="8" fill="#0f172a"/>
+  <text x="210" y="310" font-family="monospace" font-size="13" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Memory: O(N × h × d)</text>
+  <text x="210" y="330" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle" dominant-baseline="middle">h heads × d dimensions × N tokens</text>
+  
+  <text x="55" y="365" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Example: Llama-70B with 128k context</text>
+  <text x="55" y="385" font-family="monospace" font-size="10" fill="#ef4444" dominant-baseline="middle">KV Cache: ~40GB per batch!</text>
+  
+  <!-- Arrow -->
+  <text x="440" y="260" font-family="Arial" font-size="20" fill="#f093fb" text-anchor="middle" font-weight="bold" dominant-baseline="middle">→</text>
+  <text x="440" y="285" font-family="monospace" font-size="10" fill="#f093fb" text-anchor="middle" dominant-baseline="middle">Compress!</text>
+  
+  <!-- Right: Compact Methods -->
+  <rect x="490" y="90" width="380" height="340" rx="14" fill="#1e293b" stroke="url(#compressGrad)" stroke-width="2" filter="url(#shadow)"/>
+  <text x="680" y="120" font-family="Arial" font-size="16" fill="#f093fb" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Compact: Shared/Compressed KV</text>
+  
+  <!-- MQA -->
+  <rect x="510" y="145" width="165" height="85" rx="8" fill="#0f172a" stroke="#4ade80" stroke-width="1"/>
+  <text x="592" y="168" font-family="monospace" font-size="11" fill="#4ade80" text-anchor="middle" font-weight="bold" dominant-baseline="middle">MQA</text>
+  <text x="592" y="186" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Multi-Query Attention</text>
+  <rect x="540" y="198" width="45" height="22" rx="3" fill="url(#kGrad)"/>
+  <text x="562" y="212" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">K</text>
+  <rect x="595" y="198" width="45" height="22" rx="3" fill="url(#vGrad)"/>
+  <text x="617" y="212" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">V</text>
+  
+  <!-- GQA -->
+  <rect x="690" y="145" width="165" height="85" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+  <text x="772" y="168" font-family="monospace" font-size="11" fill="#38bdf8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">GQA</text>
+  <text x="772" y="186" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Grouped-Query Attention</text>
+  <rect x="710" y="198" width="25" height="22" rx="3" fill="url(#kGrad)"/>
+  <rect x="740" y="198" width="25" height="22" rx="3" fill="url(#vGrad)"/>
+  <rect x="780" y="198" width="25" height="22" rx="3" fill="url(#kGrad)"/>
+  <rect x="810" y="198" width="25" height="22" rx="3" fill="url(#vGrad)"/>
+  
+  <!-- MLA -->
+  <rect x="595" y="245" width="175" height="75" rx="8" fill="#0f172a" stroke="#f093fb" stroke-width="1"/>
+  <text x="682" y="268" font-family="monospace" font-size="11" fill="#f093fb" text-anchor="middle" font-weight="bold" dominant-baseline="middle">MLA</text>
+  <text x="682" y="286" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Multi-head Latent Attention</text>
+  <rect x="615" y="298" width="55" height="18" rx="3" fill="url(#compressGrad)" opacity="0.7"/>
+  <text x="642" y="310" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle" dominant-baseline="middle">c (latent)</text>
+  <text x="690" y="310" font-family="Arial" font-size="12" fill="#64748b" dominant-baseline="middle">→</text>
+  <rect x="710" y="298" width="40" height="18" rx="3" fill="url(#kGrad)" opacity="0.6"/>
+  <text x="730" y="310" font-family="Arial" font-size="8" fill="#fff" text-anchor="middle" dominant-baseline="middle">K,V</text>
+  
+  <!-- Memory savings -->
+  <rect x="510" y="335" width="345" height="45" rx="8" fill="#1e3a5f"/>
+  <text x="682" y="355" font-family="monospace" font-size="13" fill="#4ade80" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Memory: O(N × Dc)</text>
+  <text x="682" y="373" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Dc ≪ h×d (compressed dim)</text>
+  
+  <text x="530" y="405" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ MQA: h× reduction</text>
+  <text x="530" y="420" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ GQA: h/g× reduction (Llama 2)</text>
+  <text x="530" y="435" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">✓ MLA: Flexible (DeepSeek-V2)</text>
+</svg>

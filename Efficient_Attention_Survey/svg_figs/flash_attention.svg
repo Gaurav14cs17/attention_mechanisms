@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="hbmGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3d5a80"/>
+      <stop offset="100%" style="stop-color:#293241"/>
+    </linearGradient>
+    <linearGradient id="sramGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ee6c4d"/>
+      <stop offset="100%" style="stop-color:#d64933"/>
+    </linearGradient>
+    <linearGradient id="qGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#ee5a5a"/>
+    </linearGradient>
+    <linearGradient id="kGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d"/>
+      <stop offset="100%" style="stop-color:#f4c430"/>
+    </linearGradient>
+    <linearGradient id="vGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6bcb77"/>
+      <stop offset="100%" style="stop-color:#4ade80"/>
+    </linearGradient>
+    <linearGradient id="oGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4d96ff"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="600" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="26" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    FlashAttention: Memory-Efficient Attention
+  </text>
+  <text x="450" y="65" font-family="monospace" font-size="12" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Tiling Q, K, V to avoid O(N²) memory for S and P matrices
+  </text>
+  
+  <!-- GPU Memory Hierarchy -->
+  <g transform="translate(30, 90)">
+    <text x="115" y="15" font-family="Arial" font-size="14" fill="#e2e8f0" text-anchor="middle" font-weight="bold" dominant-baseline="middle">GPU Memory Hierarchy</text>
+    
+    <!-- HBM -->
+    <rect x="0" y="30" width="230" height="200" rx="12" fill="url(#hbmGrad)" filter="url(#shadow)"/>
+    <text x="115" y="55" font-family="Arial" font-size="13" fill="#e2e8f0" text-anchor="middle" font-weight="bold" dominant-baseline="middle">HBM (Global Memory)</text>
+    <text x="115" y="75" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">~2 TB/s • Large capacity</text>
+    
+    <!-- Q, K, V, O matrices -->
+    <g transform="translate(15, 95)">
+      <rect x="0" y="0" width="40" height="100" rx="4" fill="url(#qGrad)"/>
+      <text x="20" y="50" font-family="Arial" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Q</text>
+      
+      <rect x="50" y="0" width="40" height="100" rx="4" fill="url(#kGrad)"/>
+      <text x="70" y="50" font-family="Arial" font-size="16" fill="#1e293b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">K</text>
+      
+      <rect x="100" y="0" width="40" height="100" rx="4" fill="url(#vGrad)"/>
+      <text x="120" y="50" font-family="Arial" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">V</text>
+      
+      <rect x="150" y="0" width="40" height="100" rx="4" fill="url(#oGrad)"/>
+      <text x="170" y="50" font-family="Arial" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">O</text>
+    </g>
+    <text x="115" y="215" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">N×d each</text>
+    
+    <!-- SRAM -->
+    <rect x="20" y="250" width="190" height="100" rx="12" fill="url(#sramGrad)" filter="url(#shadow)"/>
+    <text x="115" y="275" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">SRAM (On-chip)</text>
+    <text x="115" y="295" font-family="monospace" font-size="10" fill="#ffeedd" text-anchor="middle" dominant-baseline="middle">~19 TB/s • Limited size</text>
+    
+    <!-- Tiles in SRAM -->
+    <rect x="35" y="310" width="35" height="30" rx="3" fill="#ff6b6b" opacity="0.9"/>
+    <text x="52" y="327" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">Qᵢ</text>
+    <rect x="80" y="310" width="35" height="30" rx="3" fill="#ffd93d" opacity="0.9"/>
+    <text x="97" y="327" font-family="Arial" font-size="11" fill="#1e293b" text-anchor="middle" dominant-baseline="middle">Kⱼ</text>
+    <rect x="125" y="310" width="35" height="30" rx="3" fill="#6bcb77" opacity="0.9"/>
+    <text x="142" y="327" font-family="Arial" font-size="11" fill="#fff" text-anchor="middle" dominant-baseline="middle">Vⱼ</text>
+    
+    <!-- Arrow -->
+    <text x="115" y="242" font-family="Arial" font-size="10" fill="#ee6c4d" text-anchor="middle" dominant-baseline="middle">↓ Load tiles</text>
+  </g>
+  
+  <!-- Algorithm -->
+  <g transform="translate(290, 90)">
+    <text x="290" y="15" font-family="Arial" font-size="14" fill="#e2e8f0" text-anchor="middle" font-weight="bold" dominant-baseline="middle">FlashAttention Tiling Strategy</text>
+    
+    <rect x="0" y="30" width="580" height="320" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    
+    <!-- Outer loop -->
+    <rect x="15" y="50" width="550" height="65" rx="8" fill="#0f172a" stroke="#ffd93d" stroke-width="1"/>
+    <text x="30" y="75" font-family="monospace" font-size="12" fill="#ffd93d" font-weight="bold" dominant-baseline="middle">for j = 1 to ⌈N/Bᶜ⌉:</text>
+    <text x="45" y="97" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Load Kⱼ, Vⱼ from HBM → SRAM (blocks of size Bᶜ × d)</text>
+    
+    <!-- Inner loop -->
+    <rect x="30" y="125" width="520" height="65" rx="8" fill="#0f172a" stroke="#ff6b6b" stroke-width="1"/>
+    <text x="45" y="150" font-family="monospace" font-size="12" fill="#ff6b6b" font-weight="bold" dominant-baseline="middle">for i = 1 to ⌈N/Bʳ⌉:</text>
+    <text x="60" y="172" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Load Qᵢ, Oᵢ, ℓᵢ, mᵢ from HBM (ℓ: row sum, m: row max)</text>
+    
+    <!-- Computation -->
+    <rect x="45" y="200" width="490" height="130" rx="8" fill="#1e3a5f" stroke="#4ade80" stroke-width="1"/>
+    <text x="60" y="225" font-family="Arial" font-size="12" fill="#4ade80" font-weight="bold" dominant-baseline="middle">On-chip Computation (SRAM):</text>
+    
+    <text x="70" y="255" font-family="monospace" font-size="11" fill="#fff" dominant-baseline="middle">❶ Sᵢⱼ = Qᵢ · Kⱼᵀ</text>
+    <text x="280" y="255" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">// Attention scores</text>
+    
+    <text x="70" y="280" font-family="monospace" font-size="11" fill="#fff" dominant-baseline="middle">❷ P̃ᵢⱼ = OnlineSoftmax(Sᵢⱼ, mᵢ, ℓᵢ)</text>
+    <text x="370" y="280" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">// Stable</text>
+    
+    <text x="70" y="305" font-family="monospace" font-size="11" fill="#fff" dominant-baseline="middle">❸ Oᵢ = Oᵢ + P̃ᵢⱼ · Vⱼ</text>
+    <text x="280" y="305" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">// Accumulate</text>
+    
+    <text x="70" y="325" font-family="monospace" font-size="11" fill="#3b82f6" dominant-baseline="middle">❹ Write Oᵢ back to HBM (final pass)</text>
+  </g>
+  
+  <!-- Key Insight -->
+  <rect x="30" y="450" width="840" height="120" rx="12" fill="#1e293b" stroke="#ffd93d" stroke-width="2" filter="url(#shadow)"/>
+  <text x="450" y="480" font-family="Arial" font-size="14" fill="#ffd93d" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Key Insight: Why FlashAttention Works
+  </text>
+  
+  <text x="55" y="510" font-family="monospace" font-size="11" fill="#e2e8f0" dominant-baseline="middle">Standard: Materializes N×N matrices S and P in HBM → O(N²) memory</text>
+  <text x="55" y="535" font-family="monospace" font-size="11" fill="#4ade80" dominant-baseline="middle">Flash: Never stores full S, P! Computes in tiles → O(N) memory</text>
+  <text x="55" y="560" font-family="monospace" font-size="11" fill="#94a3b8" dominant-baseline="middle">Result: 2-4× faster than PyTorch, exact same output (no approximation)</text>
+</svg>

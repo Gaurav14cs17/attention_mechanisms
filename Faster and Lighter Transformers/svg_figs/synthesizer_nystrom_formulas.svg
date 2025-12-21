@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Synthesizer and Nystromformer (Equations 23-29)
+  </text>
+  
+  <!-- Dense Synthesizer -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="400" height="180" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Dense Synthesizer (Eq 23-24)</text>
+    
+    <text x="20" y="55" font-family="Arial" font-size="11" fill="#e2e8f0" dominant-baseline="middle">Learn scores without dot product:</text>
+    
+    <text x="200" y="85" font-family="Georgia, serif" font-size="13" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      F(X_i) = ReLU(X_i W_1 + b_1) W_2 + b_2
+    </text>
+    
+    <text x="200" y="115" font-family="Georgia, serif" font-size="13" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attention(X) = Softmax(F(X)) G(X)
+    </text>
+    
+    <text x="20" y="150" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">W_1: d to d, W_2: d to n (project to seq length)</text>
+    <text x="20" y="170" font-family="monospace" font-size="9" fill="#64748b" dominant-baseline="middle">No QK interaction - scores learned directly!</text>
+  </g>
+  
+  <!-- Factorized Dense Synthesizer -->
+  <g transform="translate(470, 70)">
+    <rect x="0" y="0" width="400" height="180" rx="12" fill="#1e293b" stroke="#43e97b" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#43e97b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Factorized Synthesizer (Eq 25-26)</text>
+    
+    <text x="200" y="55" font-family="Georgia, serif" font-size="12" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      A = F_A(X) in R^(n x a)
+    </text>
+    <text x="200" y="80" font-family="Georgia, serif" font-size="12" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      B = F_B(X) in R^(n x b)
+    </text>
+    
+    <text x="200" y="110" font-family="Georgia, serif" font-size="12" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">
+      Attention = Softmax(H_A(A) H_B(B)^T) G(X)
+    </text>
+    
+    <text x="20" y="145" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">a x b = n (factorized dimensions)</text>
+    <text x="20" y="165" font-family="monospace" font-size="9" fill="#64748b" dominant-baseline="middle">H: tiling function, repeats vectors</text>
+  </g>
+  
+  <!-- Random Synthesizer -->
+  <g transform="translate(30, 270)">
+    <rect x="0" y="0" width="400" height="100" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#a78bfa" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Random Synthesizer (Eq 27)</text>
+    
+    <text x="200" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attention(X) = Softmax(R_1 R_2^T) G(X)
+    </text>
+    
+    <text x="200" y="85" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">R_1, R_2 in R^(n x k) - learned random matrices!</text>
+  </g>
+  
+  <!-- Nystromformer -->
+  <g transform="translate(470, 270)">
+    <rect x="0" y="0" width="400" height="210" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="25" font-family="Arial" font-size="13" fill="#fbbf24" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Nystromformer (Eq 28-29)</text>
+    
+    <text x="20" y="55" font-family="Arial" font-size="11" fill="#e2e8f0" dominant-baseline="middle">Nystrom approximation with landmarks:</text>
+    
+    <text x="200" y="85" font-family="Georgia, serif" font-size="12" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Softmax(QK^T) approx S_QK~ S_Q~K~^+ S_Q~K
+    </text>
+    
+    <text x="200" y="115" font-family="Georgia, serif" font-size="12" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attention(X) approx S_QK~ Z^+ S_Q~K V
+    </text>
+    
+    <text x="20" y="150" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">K~, Q~: landmark points (segment means)</text>
+    <text x="20" y="170" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">S_AB = Softmax(AB^T / sqrt(d))</text>
+    <text x="20" y="190" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">Complexity: O(n) with constant landmarks</text>
+  </g>
+  
+  <!-- Summary -->
+  <g transform="translate(30, 400)">
+    <rect x="0" y="0" width="840" height="80" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+    <text x="420" y="25" font-family="Arial" font-size="12" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Key Insight from Tay et al.</text>
+    <text x="420" y="50" font-family="monospace" font-size="11" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">
+      "Query-key interaction is useful but not that important" - Synthesizers competitive with Transformers
+    </text>
+    <text x="420" y="70" font-family="monospace" font-size="9" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+      Complexity remains O(n^2) but eliminates QK^T computation cost
+    </text>
+  </g>
+</svg>
+

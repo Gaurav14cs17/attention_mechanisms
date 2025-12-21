@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 500">
+  <defs>
+    <linearGradient id="device1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#ee5a5a"/>
+    </linearGradient>
+    <linearGradient id="device2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ecdc4"/>
+      <stop offset="100%" style="stop-color:#44b8b0"/>
+    </linearGradient>
+    <linearGradient id="device3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a29bfe"/>
+      <stop offset="100%" style="stop-color:#6c5ce7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.2" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="850" height="500" fill="#0f0f23"/>
+  
+  <!-- Title -->
+  <text x="425" y="35" text-anchor="middle" fill="#fff" font-size="22" font-weight="bold" font-family="Arial">Micro-Batching with GPipe</text>
+  <text x="425" y="58" text-anchor="middle" fill="#aaa" font-size="12" font-family="Arial">Model Parallelism: Distribute layers across devices, pipeline micro-batches</text>
+  
+  <!-- Device Labels -->
+  <text x="60" y="130" text-anchor="end" fill="#ff6b6b" font-size="14" font-weight="bold" font-family="Arial">Device 1</text>
+  <text x="60" y="200" text-anchor="end" fill="#4ecdc4" font-size="14" font-weight="bold" font-family="Arial">Device 2</text>
+  <text x="60" y="270" text-anchor="end" fill="#a29bfe" font-size="14" font-weight="bold" font-family="Arial">Device 3</text>
+  
+  <text x="50" y="150" text-anchor="end" fill="#888" font-size="10" font-family="Arial">(Layers 1-4)</text>
+  <text x="50" y="220" text-anchor="end" fill="#888" font-size="10" font-family="Arial">(Layers 5-8)</text>
+  <text x="50" y="290" text-anchor="end" fill="#888" font-size="10" font-family="Arial">(Layers 9-12)</text>
+  
+  <!-- Time axis -->
+  <line x1="80" y1="310" x2="800" y2="310" stroke="#555" stroke-width="2"/>
+  <text x="440" y="335" text-anchor="middle" fill="#888" font-size="12" font-family="Arial">Time</text>
+  <polygon points="800,310 790,305 790,315" fill="#555"/>
+  
+  <!-- Forward Pass Blocks (F) -->
+  <!-- Device 1 forward -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="110" width="70" height="40" rx="5" fill="url(#device1)"/>
+    <text x="135" y="135" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F1</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="180" y="110" width="70" height="40" rx="5" fill="url(#device1)"/>
+    <text x="215" y="135" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F2</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="260" y="110" width="70" height="40" rx="5" fill="url(#device1)"/>
+    <text x="295" y="135" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F3</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="340" y="110" width="70" height="40" rx="5" fill="url(#device1)"/>
+    <text x="375" y="135" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F4</text>
+  </g>
+  
+  <!-- Device 2 forward -->
+  <g filter="url(#shadow)">
+    <rect x="180" y="180" width="70" height="40" rx="5" fill="url(#device2)"/>
+    <text x="215" y="205" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F1</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="260" y="180" width="70" height="40" rx="5" fill="url(#device2)"/>
+    <text x="295" y="205" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F2</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="340" y="180" width="70" height="40" rx="5" fill="url(#device2)"/>
+    <text x="375" y="205" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F3</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="420" y="180" width="70" height="40" rx="5" fill="url(#device2)"/>
+    <text x="455" y="205" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F4</text>
+  </g>
+  
+  <!-- Device 3 forward -->
+  <g filter="url(#shadow)">
+    <rect x="260" y="250" width="70" height="40" rx="5" fill="url(#device3)"/>
+    <text x="295" y="275" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F1</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="340" y="250" width="70" height="40" rx="5" fill="url(#device3)"/>
+    <text x="375" y="275" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F2</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="420" y="250" width="70" height="40" rx="5" fill="url(#device3)"/>
+    <text x="455" y="275" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F3</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="500" y="250" width="70" height="40" rx="5" fill="url(#device3)"/>
+    <text x="535" y="275" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">F4</text>
+  </g>
+  
+  <!-- Backward Pass Blocks (B) - lighter colors -->
+  <!-- Device 3 backward -->
+  <rect x="580" y="250" width="55" height="40" rx="5" fill="#6c5ce7" opacity="0.6" stroke="#a29bfe" stroke-width="1"/>
+  <text x="607" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">B1</text>
+  
+  <rect x="645" y="250" width="55" height="40" rx="5" fill="#6c5ce7" opacity="0.6" stroke="#a29bfe" stroke-width="1"/>
+  <text x="672" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">B2</text>
+  
+  <rect x="710" y="250" width="55" height="40" rx="5" fill="#6c5ce7" opacity="0.6" stroke="#a29bfe" stroke-width="1"/>
+  <text x="737" y="275" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">B3</text>
+  
+  <!-- Device 2 backward -->
+  <rect x="645" y="180" width="55" height="40" rx="5" fill="#44b8b0" opacity="0.6" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="672" y="205" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">B1</text>
+  
+  <rect x="710" y="180" width="55" height="40" rx="5" fill="#44b8b0" opacity="0.6" stroke="#4ecdc4" stroke-width="1"/>
+  <text x="737" y="205" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">B2</text>
+  
+  <!-- Device 1 backward -->
+  <rect x="710" y="110" width="55" height="40" rx="5" fill="#ee5a5a" opacity="0.6" stroke="#ff6b6b" stroke-width="1"/>
+  <text x="737" y="135" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">B1</text>
+  
+  <!-- Waiting periods (gray) -->
+  <rect x="420" y="115" width="280" height="30" rx="3" fill="#333" opacity="0.5"/>
+  <text x="560" y="135" text-anchor="middle" fill="#888" font-size="10" font-family="Arial" dominant-baseline="middle">Waiting</text>
+  
+  <rect x="500" y="185" width="135" height="30" rx="3" fill="#333" opacity="0.5"/>
+  <text x="567" y="205" text-anchor="middle" fill="#888" font-size="10" font-family="Arial" dominant-baseline="middle">Waiting</text>
+  
+  <!-- Data flow arrows -->
+  <path d="M170 150 L180 180" stroke="#ffd93d" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <path d="M250 150 L260 180" stroke="#ffd93d" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <path d="M330 150 L340 180" stroke="#ffd93d" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <path d="M250 220 L260 250" stroke="#ffd93d" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <path d="M330 220 L340 250" stroke="#ffd93d" stroke-width="1.5" stroke-dasharray="3,2"/>
+  
+  <!-- Legend -->
+  <rect x="100" y="360" width="320" height="120" rx="10" fill="#1a1a3e" stroke="#555" stroke-width="1"/>
+  <text x="260" y="385" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" font-family="Arial">Pipeline Parallelism</text>
+  
+  <rect x="115" y="400" width="20" height="15" fill="url(#device1)"/>
+  <text x="145" y="412" fill="#aaa" font-size="11" font-family="Arial" dominant-baseline="middle">Forward pass (compute)</text>
+  
+  <rect x="115" y="425" width="20" height="15" fill="#ee5a5a" opacity="0.6" stroke="#ff6b6b"/>
+  <text x="145" y="437" fill="#aaa" font-size="11" font-family="Arial" dominant-baseline="middle">Backward pass (gradients)</text>
+  
+  <rect x="115" y="450" width="20" height="15" fill="#333"/>
+  <text x="145" y="462" fill="#aaa" font-size="11" font-family="Arial" dominant-baseline="middle">Waiting (idle time)</text>
+  
+  <!-- Benefits -->
+  <rect x="450" y="360" width="350" height="120" rx="10" fill="#1a1a3e" stroke="#4ecdc4" stroke-width="2"/>
+  <text x="625" y="385" text-anchor="middle" fill="#4ecdc4" font-size="14" font-weight="bold" font-family="Arial">GPipe Benefits</text>
+  <text x="465" y="410" fill="#fff" font-size="11" font-family="Arial">Train 127x more layers on same hardware</text>
+  <text x="465" y="430" fill="#fff" font-size="11" font-family="Arial">1 TPU (16GB): 3 layers -> 13 layers with GPipe</text>
+  <text x="465" y="450" fill="#fff" font-size="11" font-family="Arial">128 TPUs: Up to 1663 layers!</text>
+  <text x="465" y="470" fill="#fff" font-size="11" font-family="Arial">4.8x throughput with 32 micro-batches</text>
+</svg>
+

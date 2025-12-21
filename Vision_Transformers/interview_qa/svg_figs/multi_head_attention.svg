@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="h1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="h2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <linearGradient id="h3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#229954"/>
+    </linearGradient>
+    <linearGradient id="h4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#8e44ad"/>
+    </linearGradient>
+    <marker id="arrh" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7f8c8d"/>
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Multi-Head Self-Attention in ViT</text>
+  
+  <!-- Input -->
+  <g>
+    <rect x="50" y="140" width="80" height="120" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" rx="5"/>
+    <text x="90" y="185" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Input</text>
+    <text x="90" y="205" font-family="Arial, sans-serif" font-size="11" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">X</text>
+    <text x="90" y="225" font-family="Arial, sans-serif" font-size="10" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">(N x D)</text>
+  </g>
+  
+  <!-- Linear projections -->
+  <g>
+    <rect x="160" y="80" width="100" height="240" fill="#f8f9fa" stroke="#dee2e6" rx="8"/>
+    <text x="210" y="105" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Linear</text>
+    <text x="210" y="120" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Projections</text>
+    
+    <rect x="175" y="140" width="70" height="25" fill="#e74c3c" rx="3"/>
+    <text x="210" y="157" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">W_Q</text>
+    
+    <rect x="175" y="175" width="70" height="25" fill="#3498db" rx="3"/>
+    <text x="210" y="192" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">W_K</text>
+    
+    <rect x="175" y="210" width="70" height="25" fill="#27ae60" rx="3"/>
+    <text x="210" y="227" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">W_V</text>
+    
+    <text x="210" y="265" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Each: D x D</text>
+    <text x="210" y="280" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Split into h heads</text>
+    <text x="210" y="295" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">d_k = D/h</text>
+  </g>
+  
+  <!-- Arrow -->
+  <path d="M 135 200 L 155 200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrh)"/>
+  <path d="M 265 200 L 295 200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrh)"/>
+  
+  <!-- Multiple Heads -->
+  <g>
+    <rect x="300" y="60" width="280" height="280" fill="#f8f9fa" stroke="#dee2e6" rx="10"/>
+    <text x="440" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Parallel Attention Heads (h = 12 in ViT-B)</text>
+    
+    <!-- Head 1 -->
+    <rect x="320" y="105" width="60" height="55" fill="url(#h1Grad)" rx="5"/>
+    <text x="350" y="125" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Head 1</text>
+    <text x="350" y="145" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">d_k=64</text>
+    
+    <!-- Head 2 -->
+    <rect x="390" y="105" width="60" height="55" fill="url(#h2Grad)" rx="5"/>
+    <text x="420" y="125" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Head 2</text>
+    <text x="420" y="145" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">d_k=64</text>
+    
+    <!-- Head 3 -->
+    <rect x="460" y="105" width="60" height="55" fill="url(#h3Grad)" rx="5"/>
+    <text x="490" y="125" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Head 3</text>
+    <text x="490" y="145" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">d_k=64</text>
+    
+    <!-- More heads indicator -->
+    <text x="440" y="185" font-family="Arial, sans-serif" font-size="16" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">... (12 heads total)</text>
+    
+    <!-- Head 12 -->
+    <rect x="390" y="210" width="100" height="55" fill="url(#h4Grad)" rx="5"/>
+    <text x="440" y="230" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Head 12</text>
+    <text x="440" y="250" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">d_k=64</text>
+    
+    <!-- Each head formula -->
+    <rect x="320" y="280" width="240" height="45" fill="rgba(44,62,80,0.1)" rx="5"/>
+    <text x="440" y="298" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Each head: softmax(Q_i K_i^T / sqrt(d_k)) V_i</text>
+    <text x="440" y="315" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Output: N x d_k per head</text>
+  </g>
+  
+  <!-- Arrow -->
+  <path d="M 585 200 L 615 200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrh)"/>
+  
+  <!-- Concat -->
+  <g>
+    <rect x="620" y="100" width="80" height="200" fill="#e67e22" rx="8"/>
+    <text x="660" y="170" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Concat</text>
+    <text x="660" y="200" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">All heads</text>
+    <text x="660" y="230" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">(N x D)</text>
+  </g>
+  
+  <!-- Arrow -->
+  <path d="M 705 200 L 735 200" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrh)"/>
+  
+  <!-- Output projection -->
+  <g>
+    <rect x="740" y="140" width="110" height="120" fill="#34495e" rx="8"/>
+    <text x="795" y="175" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Output</text>
+    <text x="795" y="195" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Projection</text>
+    <text x="795" y="225" font-family="Arial, sans-serif" font-size="10" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">W_O: D x D</text>
+  </g>
+  
+  <!-- Final formula -->
+  <rect x="200" y="355" width="500" height="35" fill="#ecf0f1" rx="5"/>
+  <text x="450" y="377" font-family="monospace" font-size="12" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">MultiHead(Q,K,V) = Concat(head_1,...,head_h) W_O</text>
+</svg>
+

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="rnnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="transGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#f5576c"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/>
+      <feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#000" flood-opacity="0.2" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0f0f23"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#fff" font-size="24" font-weight="bold" font-family="Arial">RNN vs Transformer: Sequential vs Parallel Processing</text>
+  
+  <!-- RNN Section -->
+  <text x="225" y="80" text-anchor="middle" fill="#667eea" font-size="18" font-weight="bold" font-family="Arial">Recurrent Neural Network (RNN)</text>
+  
+  <!-- RNN nodes -->
+  <g filter="url(#shadow)">
+    <circle cx="80" cy="180" r="30" fill="url(#rnnGrad)"/>
+    <circle cx="160" cy="180" r="30" fill="url(#rnnGrad)"/>
+    <circle cx="240" cy="180" r="30" fill="url(#rnnGrad)"/>
+    <circle cx="320" cy="180" r="30" fill="url(#rnnGrad)"/>
+    <circle cx="400" cy="180" r="30" fill="url(#rnnGrad)"/>
+  </g>
+  
+  <!-- RNN arrows (sequential) -->
+  <path d="M110 180 L130 180" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M190 180 L210 180" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M270 180 L290 180" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M350 180 L370 180" stroke="#fff" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#fff"/>
+    </marker>
+  </defs>
+  
+  <!-- RNN labels -->
+  <text x="80" y="185" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">h1</text>
+  <text x="160" y="185" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">h2</text>
+  <text x="240" y="185" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">h3</text>
+  <text x="320" y="185" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">h4</text>
+  <text x="400" y="185" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial" dominant-baseline="middle">h5</text>
+  
+  <!-- Input tokens -->
+  <text x="80" y="130" text-anchor="middle" fill="#4ecdc4" font-size="11" font-family="Arial">x1</text>
+  <text x="160" y="130" text-anchor="middle" fill="#4ecdc4" font-size="11" font-family="Arial">x2</text>
+  <text x="240" y="130" text-anchor="middle" fill="#4ecdc4" font-size="11" font-family="Arial">x3</text>
+  <text x="320" y="130" text-anchor="middle" fill="#4ecdc4" font-size="11" font-family="Arial">x4</text>
+  <text x="400" y="130" text-anchor="middle" fill="#4ecdc4" font-size="11" font-family="Arial">x5</text>
+  
+  <line x1="80" y1="140" x2="80" y2="150" stroke="#4ecdc4" stroke-width="1.5"/>
+  <line x1="160" y1="140" x2="160" y2="150" stroke="#4ecdc4" stroke-width="1.5"/>
+  <line x1="240" y1="140" x2="240" y2="150" stroke="#4ecdc4" stroke-width="1.5"/>
+  <line x1="320" y1="140" x2="320" y2="150" stroke="#4ecdc4" stroke-width="1.5"/>
+  <line x1="400" y1="140" x2="400" y2="150" stroke="#4ecdc4" stroke-width="1.5"/>
+  
+  <!-- RNN Properties -->
+  <rect x="50" y="240" width="380" height="100" rx="10" fill="#1a1a3e" stroke="#667eea" stroke-width="2"/>
+  <text x="240" y="265" text-anchor="middle" fill="#ff6b6b" font-size="14" font-weight="bold" font-family="Arial">Sequential Processing</text>
+  <text x="240" y="290" text-anchor="middle" fill="#aaa" font-size="12" font-family="Arial">Time: O(n) - Must process one token at a time</text>
+  <text x="240" y="310" text-anchor="middle" fill="#aaa" font-size="12" font-family="Arial">Context: Limited (~400 tokens for LSTM)</text>
+  <text x="240" y="330" text-anchor="middle" fill="#aaa" font-size="12" font-family="Arial">Cannot parallelize across sequence</text>
+  
+  <!-- Transformer Section -->
+  <text x="675" y="80" text-anchor="middle" fill="#f5576c" font-size="18" font-weight="bold" font-family="Arial">Transformer (Self-Attention)</text>
+  
+  <!-- Transformer nodes -->
+  <g filter="url(#shadow)">
+    <circle cx="500" cy="180" r="25" fill="url(#transGrad)"/>
+    <circle cx="580" cy="180" r="25" fill="url(#transGrad)"/>
+    <circle cx="660" cy="180" r="25" fill="url(#transGrad)"/>
+    <circle cx="740" cy="180" r="25" fill="url(#transGrad)"/>
+    <circle cx="820" cy="180" r="25" fill="url(#transGrad)"/>
+  </g>
+  
+  <!-- Transformer all-to-all connections -->
+  <g stroke="#f5576c" stroke-width="0.8" opacity="0.5">
+    <line x1="500" y1="180" x2="580" y2="180"/>
+    <line x1="500" y1="180" x2="660" y2="180"/>
+    <line x1="500" y1="180" x2="740" y2="180"/>
+    <line x1="500" y1="180" x2="820" y2="180"/>
+    <line x1="580" y1="180" x2="660" y2="180"/>
+    <line x1="580" y1="180" x2="740" y2="180"/>
+    <line x1="580" y1="180" x2="820" y2="180"/>
+    <line x1="660" y1="180" x2="740" y2="180"/>
+    <line x1="660" y1="180" x2="820" y2="180"/>
+    <line x1="740" y1="180" x2="820" y2="180"/>
+  </g>
+  
+  <!-- Curved connections to show attention -->
+  <path d="M500 155 Q 660 100 820 155" stroke="#f5576c" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  <path d="M580 155 Q 700 110 820 155" stroke="#f5576c" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  
+  <!-- Transformer labels -->
+  <text x="500" y="185" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">1</text>
+  <text x="580" y="185" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">2</text>
+  <text x="660" y="185" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">3</text>
+  <text x="740" y="185" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">4</text>
+  <text x="820" y="185" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial" dominant-baseline="middle">5</text>
+  
+  <!-- Transformer Properties -->
+  <rect x="470" y="240" width="380" height="100" rx="10" fill="#1a1a3e" stroke="#f5576c" stroke-width="2"/>
+  <text x="660" y="265" text-anchor="middle" fill="#4ecdc4" font-size="14" font-weight="bold" font-family="Arial">Parallel Processing</text>
+  <text x="660" y="290" text-anchor="middle" fill="#aaa" font-size="12" font-family="Arial">Time: O(1) - All tokens processed simultaneously</text>
+  <text x="660" y="310" text-anchor="middle" fill="#aaa" font-size="12" font-family="Arial">Context: Unlimited (any position to any)</text>
+  <text x="660" y="330" text-anchor="middle" fill="#aaa" font-size="12" font-family="Arial">Trade-off: O(n^2) memory complexity</text>
+  
+  <!-- Comparison Box -->
+  <rect x="150" y="370" width="600" height="110" rx="10" fill="#1a1a3e" stroke="#ffd93d" stroke-width="2"/>
+  <text x="450" y="400" text-anchor="middle" fill="#ffd93d" font-size="16" font-weight="bold" font-family="Arial">Key Difference</text>
+  <text x="450" y="430" text-anchor="middle" fill="#fff" font-size="13" font-family="Arial">RNN: Information flows sequentially - distant tokens hard to connect</text>
+  <text x="450" y="455" text-anchor="middle" fill="#fff" font-size="13" font-family="Arial">Transformer: Every token can directly attend to every other token</text>
+  <text x="450" y="475" text-anchor="middle" fill="#ff6b6b" font-size="12" font-family="Arial">This is why Transformers excel at long-range dependencies!</text>
+</svg>
+

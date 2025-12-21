@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="quadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c"/>
+      <stop offset="100%" style="stop-color:#c0392b"/>
+    </linearGradient>
+    <linearGradient id="linearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#229954"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Self-Attention Complexity Analysis</text>
+  
+  <!-- Formula breakdown -->
+  <g>
+    <rect x="50" y="60" width="800" height="100" fill="#f8f9fa" stroke="#dee2e6" rx="10"/>
+    <text x="450" y="90" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Standard Self-Attention Formula</text>
+    <text x="450" y="120" font-family="monospace" font-size="16" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V</text>
+    <text x="450" y="145" font-family="Arial, sans-serif" font-size="12" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Q, K, V shapes: (N x D) where N = sequence length, D = embedding dimension</text>
+  </g>
+  
+  <!-- Complexity breakdown -->
+  <g>
+    <rect x="50" y="180" width="380" height="200" fill="url(#quadGrad)" opacity="0.1" rx="10"/>
+    <rect x="50" y="180" width="380" height="45" fill="url(#quadGrad)" rx="10"/>
+    <text x="240" y="210" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Time Complexity: O(N^2 x D)</text>
+    
+    <rect x="70" y="240" width="340" height="55" fill="white" rx="5"/>
+    <text x="240" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">QK^T computation: O(N^2 x D)</text>
+    <text x="240" y="280" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">(N x D) x (D x N) = (N x N) matrix</text>
+    
+    <rect x="70" y="305" width="340" height="55" fill="white" rx="5"/>
+    <text x="240" y="325" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b" text-anchor="middle" dominant-baseline="middle">Attention x V: O(N^2 x D)</text>
+    <text x="240" y="345" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">(N x N) x (N x D) = (N x D)</text>
+  </g>
+  
+  <g>
+    <rect x="470" y="180" width="380" height="200" fill="url(#linearGrad)" opacity="0.1" rx="10"/>
+    <rect x="470" y="180" width="380" height="45" fill="url(#linearGrad)" rx="10"/>
+    <text x="660" y="210" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">Memory Complexity: O(N^2)</text>
+    
+    <rect x="490" y="240" width="340" height="55" fill="white" rx="5"/>
+    <text x="660" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#229954" text-anchor="middle" dominant-baseline="middle">Attention Matrix Storage</text>
+    <text x="660" y="280" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Must store N x N attention weights</text>
+    
+    <rect x="490" y="305" width="340" height="55" fill="white" rx="5"/>
+    <text x="660" y="325" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#229954" text-anchor="middle" dominant-baseline="middle">Example: ViT-B with 196 patches</text>
+    <text x="660" y="345" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">196 x 196 = 38,416 attention values per head</text>
+  </g>
+  
+  <!-- Image resolution impact -->
+  <rect x="150" y="390" width="600" height="0" fill="#ecf0f1" rx="5"/>
+</svg>
+

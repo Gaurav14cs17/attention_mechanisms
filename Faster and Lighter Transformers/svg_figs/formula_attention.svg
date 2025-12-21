@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="350" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Attention Formulas
+  </text>
+  
+  <!-- Standard Attention -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="350" height="120" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Standard Self-Attention</text>
+    
+    <text x="175" y="60" font-family="Georgia, serif" font-size="16" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attention(Q, K, V) = softmax(QKᵀ/√d) · V
+    </text>
+    
+    <text x="20" y="95" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Time: O(N²d)  |  Space: O(N² + Nd)</text>
+  </g>
+  
+  <!-- Linear Attention -->
+  <g transform="translate(420, 70)">
+    <rect x="0" y="0" width="350" height="120" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#4ade80" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Linear Attention (Kernel)</text>
+    
+    <text x="175" y="60" font-family="Georgia, serif" font-size="16" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attn(Q, K, V) = φ(Q)(φ(K)ᵀV)
+    </text>
+    
+    <text x="20" y="95" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Time: O(Nd²)  |  Space: O(Nd)</text>
+  </g>
+  
+  <!-- Multi-Head Attention -->
+  <g transform="translate(30, 210)">
+    <rect x="0" y="0" width="350" height="120" rx="12" fill="#1e293b" stroke="#4facfe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#4facfe" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Multi-Head Attention</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      MultiHead(Q,K,V) = Concat(head₁,...,headₕ)Wᴼ
+    </text>
+    
+    <text x="175" y="80" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      where headᵢ = Attention(QWᵢQ, KWᵢK, VWᵢV)
+    </text>
+    
+    <text x="20" y="108" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">h heads, each with d/h dimensions</text>
+  </g>
+  
+  <!-- Sparse Attention -->
+  <g transform="translate(420, 210)">
+    <rect x="0" y="0" width="350" height="120" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2" filter="url(#shadow)"/>
+    <text x="175" y="25" font-family="Arial" font-size="13" fill="#a78bfa" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Sparse Attention</text>
+    
+    <text x="175" y="55" font-family="Georgia, serif" font-size="14" fill="#fff" text-anchor="middle" dominant-baseline="middle">
+      Attn(Q,K,V) = softmax(M ⊙ QKᵀ/√d) · V
+    </text>
+    
+    <text x="175" y="80" font-family="Georgia, serif" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">
+      M = sparse mask (local + global + random)
+    </text>
+    
+    <text x="20" y="108" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Time: O(Nk)  |  k = sparsity factor</text>
+  </g>
+</svg>
+

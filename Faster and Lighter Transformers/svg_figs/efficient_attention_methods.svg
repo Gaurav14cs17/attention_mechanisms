@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650">
+  <defs>
+    <linearGradient id="sparseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="100%" style="stop-color:#ee5a5a"/>
+    </linearGradient>
+    <linearGradient id="lowrankGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="memoryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <linearGradient id="kernelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="650" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="500" y="35" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Efficient Attention Mechanisms
+  </text>
+  <text x="500" y="62" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Reducing the O(N²) complexity of self-attention
+  </text>
+  
+  <!-- Standard Attention (center reference) -->
+  <rect x="380" y="85" width="240" height="50" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+  <text x="500" y="105" font-family="Arial" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Standard Attention: O(N²)</text>
+  <text x="500" y="125" font-family="monospace" font-size="10" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Softmax(QKᵀ/√d) · V</text>
+  
+  <!-- Arrow down -->
+  <text x="500" y="150" font-family="Arial" font-size="16" fill="#64748b" text-anchor="middle" dominant-baseline="middle">↓ Optimize ↓</text>
+  
+  <!-- 1. Sparse Attention Patterns -->
+  <g transform="translate(30, 175)">
+    <rect x="0" y="0" width="220" height="280" rx="14" fill="#1e293b" stroke="url(#sparseGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="220" height="45" rx="14" fill="url(#sparseGrad)"/>
+    <rect x="0" y="30" width="220" height="15" fill="url(#sparseGrad)"/>
+    <text x="110" y="30" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Sparse Patterns</text>
+    
+    <text x="15" y="70" font-family="Arial" font-size="11" fill="#ff6b6b" font-weight="bold" dominant-baseline="middle">Local Attention</text>
+    <text x="15" y="90" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Fixed window around each token</text>
+    <text x="15" y="108" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Complexity: O(N × w)</text>
+    
+    <text x="15" y="135" font-family="Arial" font-size="11" fill="#ff6b6b" font-weight="bold" dominant-baseline="middle">Global + Local</text>
+    <text x="15" y="155" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Special tokens attend globally</text>
+    <text x="15" y="173" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Rest use local windows</text>
+    
+    <text x="15" y="200" font-family="Arial" font-size="11" fill="#ff6b6b" font-weight="bold" dominant-baseline="middle">Random</text>
+    <text x="15" y="220" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Sample random connections</text>
+    
+    <rect x="15" y="240" width="190" height="25" rx="6" fill="#0f172a"/>
+    <text x="110" y="255" font-family="monospace" font-size="9" fill="#ff6b6b" text-anchor="middle" dominant-baseline="middle">Longformer, BigBird, Sparse Trans.</text>
+  </g>
+  
+  <!-- 2. Low-Rank Approximation -->
+  <g transform="translate(270, 175)">
+    <rect x="0" y="0" width="220" height="280" rx="14" fill="#1e293b" stroke="url(#lowrankGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="220" height="45" rx="14" fill="url(#lowrankGrad)"/>
+    <rect x="0" y="30" width="220" height="15" fill="url(#lowrankGrad)"/>
+    <text x="110" y="30" font-family="Arial" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Low-Rank Approx</text>
+    
+    <text x="15" y="70" font-family="Arial" font-size="11" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Linformer</text>
+    <text x="15" y="90" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Project K,V to low dim k</text>
+    <text x="15" y="108" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• K̃ = EK, Ṽ = FV</text>
+    <text x="15" y="126" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Complexity: O(N × k)</text>
+    
+    <text x="15" y="155" font-family="Arial" font-size="11" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Random Projection</text>
+    <text x="15" y="175" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Nyström approximation</text>
+    <text x="15" y="193" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Landmark-based sampling</text>
+    
+    <text x="15" y="220" font-family="Arial" font-size="11" fill="#4facfe" font-weight="bold" dominant-baseline="middle">SVD-based</text>
+    <text x="15" y="240" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Decompose attention matrix</text>
+    
+    <rect x="15" y="255" width="190" height="15" rx="4" fill="#0f172a"/>
+    <text x="110" y="265" font-family="monospace" font-size="9" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">Linformer, Nyströmformer</text>
+  </g>
+  
+  <!-- 3. Kernel Methods -->
+  <g transform="translate(510, 175)">
+    <rect x="0" y="0" width="220" height="280" rx="14" fill="#1e293b" stroke="url(#kernelGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="220" height="45" rx="14" fill="url(#kernelGrad)"/>
+    <rect x="0" y="30" width="220" height="15" fill="url(#kernelGrad)"/>
+    <text x="110" y="30" font-family="Arial" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Kernel Methods</text>
+    
+    <text x="15" y="70" font-family="Arial" font-size="11" fill="#a78bfa" font-weight="bold" dominant-baseline="middle">Key Idea</text>
+    <text x="15" y="90" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• softmax(QKᵀ) ≈ φ(Q)φ(K)ᵀ</text>
+    <text x="15" y="108" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Use kernel trick!</text>
+    
+    <text x="15" y="135" font-family="Arial" font-size="11" fill="#a78bfa" font-weight="bold" dominant-baseline="middle">Performer</text>
+    <text x="15" y="155" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• FAVOR+ algorithm</text>
+    <text x="15" y="173" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Random features</text>
+    
+    <text x="15" y="200" font-family="Arial" font-size="11" fill="#a78bfa" font-weight="bold" dominant-baseline="middle">Linear Transformer</text>
+    <text x="15" y="220" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• ELU activation kernel</text>
+    <text x="15" y="238" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• O(N) complexity</text>
+    
+    <rect x="15" y="255" width="190" height="15" rx="4" fill="#0f172a"/>
+    <text x="110" y="265" font-family="monospace" font-size="9" fill="#a78bfa" text-anchor="middle" dominant-baseline="middle">Performer, Linear Trans., RFA</text>
+  </g>
+  
+  <!-- 4. Memory Compression -->
+  <g transform="translate(750, 175)">
+    <rect x="0" y="0" width="220" height="280" rx="14" fill="#1e293b" stroke="url(#memoryGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="220" height="45" rx="14" fill="url(#memoryGrad)"/>
+    <rect x="0" y="30" width="220" height="15" fill="url(#memoryGrad)"/>
+    <text x="110" y="30" font-family="Arial" font-size="13" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle"> Memory Methods</text>
+    
+    <text x="15" y="70" font-family="Arial" font-size="11" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Compressive Trans.</text>
+    <text x="15" y="90" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Compress past sequence</text>
+    <text x="15" y="108" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Store in compact memory</text>
+    
+    <text x="15" y="135" font-family="Arial" font-size="11" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Set Transformer</text>
+    <text x="15" y="155" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Inducing points</text>
+    <text x="15" y="173" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Fixed-size memory</text>
+    
+    <text x="15" y="200" font-family="Arial" font-size="11" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Pooling</text>
+    <text x="15" y="220" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Pooling Transformer</text>
+    <text x="15" y="238" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">• Funnel Transformer</text>
+    
+    <rect x="15" y="255" width="190" height="15" rx="4" fill="#0f172a"/>
+    <text x="110" y="265" font-family="monospace" font-size="9" fill="#43e97b" text-anchor="middle" dominant-baseline="middle">Set Trans., Perceiver, Funnel</text>
+  </g>
+  
+  <!-- Complexity comparison table -->
+  <rect x="30" y="475" width="940" height="155" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="500" y="500" font-family="Arial" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Complexity Comparison</text>
+  
+  <!-- Table header -->
+  <rect x="50" y="515" width="900" height="25" rx="4" fill="#0f172a"/>
+  <text x="150" y="530" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Method</text>
+  <text x="350" y="530" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Time Complexity</text>
+  <text x="550" y="530" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Space Complexity</text>
+  <text x="750" y="530" font-family="Arial" font-size="10" fill="#94a3b8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Quality Trade-off</text>
+  
+  <!-- Table rows -->
+  <text x="150" y="560" font-family="monospace" font-size="10" fill="#ef4444" text-anchor="middle" dominant-baseline="middle">Standard</text>
+  <text x="350" y="560" font-family="monospace" font-size="10" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">O(N²d)</text>
+  <text x="550" y="560" font-family="monospace" font-size="10" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">O(N² + Nd)</text>
+  <text x="750" y="560" font-family="monospace" font-size="10" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">Exact</text>
+  
+  <text x="150" y="585" font-family="monospace" font-size="10" fill="#ff6b6b" text-anchor="middle" dominant-baseline="middle">Sparse</text>
+  <text x="350" y="585" font-family="monospace" font-size="10" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">O(N × k)</text>
+  <text x="550" y="585" font-family="monospace" font-size="10" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">O(N × k)</text>
+  <text x="750" y="585" font-family="monospace" font-size="10" fill="#fbbf24" text-anchor="middle" dominant-baseline="middle">Pattern-dependent</text>
+  
+  <text x="150" y="610" font-family="monospace" font-size="10" fill="#4facfe" text-anchor="middle" dominant-baseline="middle">Linformer</text>
+  <text x="350" y="610" font-family="monospace" font-size="10" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">O(Nk)</text>
+  <text x="550" y="610" font-family="monospace" font-size="10" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">O(Nk + Nd)</text>
+  <text x="750" y="610" font-family="monospace" font-size="10" fill="#fbbf24" text-anchor="middle" dominant-baseline="middle">Low-rank approx</text>
+</svg>
+

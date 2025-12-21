@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+  <defs>
+    <linearGradient id="stdGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="kernelGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <linearGradient id="linearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43e97b"/>
+      <stop offset="100%" style="stop-color:#38f9d7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feOffset dx="2" dy="2" in="SourceAlpha" result="offsetblur"/><feGaussianBlur in="offsetblur" stdDeviation="3" result="blur"/><feFlood flood-color="#000" flood-opacity="0.3" result="color"/><feComposite in="color" in2="blur" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="520" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="24" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Linear Attention: Kernel Approximation
+  </text>
+  <text x="450" y="62" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Achieving O(N) complexity through kernel decomposition
+  </text>
+  
+  <!-- Standard Attention -->
+  <g transform="translate(50, 95)">
+    <rect x="0" y="0" width="380" height="180" rx="14" fill="#1e293b" stroke="url(#stdGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="380" height="45" rx="14" fill="url(#stdGrad)"/>
+    <rect x="0" y="30" width="380" height="15" fill="url(#stdGrad)"/>
+    <text x="190" y="30" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Standard Attention O(N²)</text>
+    
+    <text x="190" y="75" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Attention(Q, K, V) = softmax(QKᵀ/√d) V</text>
+    
+    <!-- Matrix multiplication diagram -->
+    <g transform="translate(30, 95)">
+      <rect x="0" y="0" width="60" height="50" rx="4" fill="#ef4444" opacity="0.8"/>
+      <text x="30" y="20" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">Q</text>
+      <text x="30" y="38" font-family="monospace" font-size="8" fill="#fecaca" text-anchor="middle" dominant-baseline="middle">N×d</text>
+      
+      <text x="80" y="30" font-family="Arial" font-size="14" fill="#94a3b8" dominant-baseline="middle">×</text>
+      
+      <rect x="100" y="0" width="50" height="50" rx="4" fill="#ef4444" opacity="0.8"/>
+      <text x="125" y="20" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">Kᵀ</text>
+      <text x="125" y="38" font-family="monospace" font-size="8" fill="#fecaca" text-anchor="middle" dominant-baseline="middle">d×N</text>
+      
+      <text x="170" y="30" font-family="Arial" font-size="14" fill="#94a3b8" dominant-baseline="middle">=</text>
+      
+      <rect x="190" y="0" width="60" height="50" rx="4" fill="#ef4444"/>
+      <text x="220" y="20" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">A</text>
+      <text x="220" y="38" font-family="monospace" font-size="8" fill="#fecaca" text-anchor="middle" dominant-baseline="middle">N×N 🔥</text>
+      
+      <text x="270" y="30" font-family="Arial" font-size="14" fill="#94a3b8" dominant-baseline="middle">×</text>
+      
+      <rect x="290" y="0" width="50" height="50" rx="4" fill="#ef4444" opacity="0.8"/>
+      <text x="315" y="20" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">V</text>
+      <text x="315" y="38" font-family="monospace" font-size="8" fill="#fecaca" text-anchor="middle" dominant-baseline="middle">N×d</text>
+    </g>
+    
+    <text x="190" y="168" font-family="monospace" font-size="9" fill="#ef4444" text-anchor="middle" dominant-baseline="middle"> Bottleneck: N×N attention matrix!</text>
+  </g>
+  
+  <!-- Arrow -->
+  <text x="450" y="195" font-family="Arial" font-size="20" fill="#64748b" text-anchor="middle" dominant-baseline="middle">↓</text>
+  <text x="565" y="195" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">Kernel trick</text>
+  
+  <!-- Linear Attention -->
+  <g transform="translate(50, 290)">
+    <rect x="0" y="0" width="380" height="200" rx="14" fill="#1e293b" stroke="url(#linearGrad)" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="380" height="45" rx="14" fill="url(#linearGrad)"/>
+    <rect x="0" y="30" width="380" height="15" fill="url(#linearGrad)"/>
+    <text x="190" y="30" font-family="Arial" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Linear Attention O(N)</text>
+    
+    <text x="20" y="70" font-family="Arial" font-size="11" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Key Insight:</text>
+    <text x="20" y="90" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">softmax(QKᵀ) ≈ φ(Q) φ(K)ᵀ</text>
+    <text x="20" y="110" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Where φ is a feature map</text>
+    
+    <!-- Rearranged computation -->
+    <g transform="translate(30, 125)">
+      <rect x="0" y="0" width="50" height="40" rx="4" fill="#43e97b" opacity="0.8"/>
+      <text x="25" y="16" font-family="Arial" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">φ(Q)</text>
+      <text x="25" y="32" font-family="monospace" font-size="7" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">N×m</text>
+      
+      <text x="65" y="25" font-family="Arial" font-size="14" fill="#94a3b8" dominant-baseline="middle">×</text>
+      
+      <text x="85" y="25" font-family="Arial" font-size="12" fill="#94a3b8" dominant-baseline="middle">(</text>
+      
+      <rect x="100" y="0" width="50" height="40" rx="4" fill="#43e97b" opacity="0.8"/>
+      <text x="125" y="16" font-family="Arial" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">φ(K)ᵀ</text>
+      <text x="125" y="32" font-family="monospace" font-size="7" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">m×N</text>
+      
+      <text x="165" y="25" font-family="Arial" font-size="14" fill="#94a3b8" dominant-baseline="middle">×</text>
+      
+      <rect x="180" y="0" width="50" height="40" rx="4" fill="#43e97b" opacity="0.8"/>
+      <text x="205" y="16" font-family="Arial" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">V</text>
+      <text x="205" y="32" font-family="monospace" font-size="7" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">N×d</text>
+      
+      <text x="245" y="25" font-family="Arial" font-size="12" fill="#94a3b8" dominant-baseline="middle">)</text>
+      
+      <text x="265" y="25" font-family="Arial" font-size="14" fill="#94a3b8" dominant-baseline="middle">=</text>
+      
+      <rect x="285" y="0" width="50" height="40" rx="4" fill="#43e97b"/>
+      <text x="310" y="16" font-family="Arial" font-size="9" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">S</text>
+      <text x="310" y="32" font-family="monospace" font-size="7" fill="#0f172a" text-anchor="middle" dominant-baseline="middle">m×d ✓</text>
+    </g>
+    
+    <text x="190" y="188" font-family="monospace" font-size="9" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">✓ Compute (φ(K)ᵀV) first: O(N×m×d)!</text>
+  </g>
+  
+  <!-- Key Methods -->
+  <g transform="translate(470, 95)">
+    <rect x="0" y="0" width="380" height="395" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    <text x="190" y="30" font-family="Arial" font-size="14" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Linear Attention Methods</text>
+    
+    <!-- Performer -->
+    <rect x="20" y="50" width="340" height="80" rx="10" fill="#0f172a" stroke="#4facfe" stroke-width="1"/>
+    <text x="40" y="75" font-family="Arial" font-size="12" fill="#4facfe" font-weight="bold" dominant-baseline="middle">Performer (FAVOR+)</text>
+    <text x="40" y="95" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">φ(x) = exp(xW - ||x||²/2) / √m</text>
+    <text x="40" y="115" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">Uses random feature approximation</text>
+    
+    <!-- Linear Transformer -->
+    <rect x="20" y="145" width="340" height="80" rx="10" fill="#0f172a" stroke="#43e97b" stroke-width="1"/>
+    <text x="40" y="170" font-family="Arial" font-size="12" fill="#43e97b" font-weight="bold" dominant-baseline="middle">Linear Transformer</text>
+    <text x="40" y="190" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">φ(x) = ELU(x) + 1</text>
+    <text x="40" y="210" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">Simple but effective kernel</text>
+    
+    <!-- Cosformer -->
+    <rect x="20" y="240" width="340" height="80" rx="10" fill="#0f172a" stroke="#a78bfa" stroke-width="1"/>
+    <text x="40" y="265" font-family="Arial" font-size="12" fill="#a78bfa" font-weight="bold" dominant-baseline="middle">CosFormer</text>
+    <text x="40" y="285" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">φ(x) = [cos(x), sin(x)]</text>
+    <text x="40" y="305" font-family="monospace" font-size="9" fill="#94a3b8" dominant-baseline="middle">Cos-based re-weighting</text>
+    
+    <!-- Summary -->
+    <rect x="20" y="335" width="340" height="45" rx="8" fill="#3b82f6" opacity="0.2"/>
+    <text x="190" y="355" font-family="Arial" font-size="11" fill="#3b82f6" text-anchor="middle" font-weight="bold" dominant-baseline="middle">All achieve O(N) complexity!</text>
+    <text x="190" y="372" font-family="monospace" font-size="9" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Trade-off: Some quality loss vs O(N²)</text>
+  </g>
+</svg>
+

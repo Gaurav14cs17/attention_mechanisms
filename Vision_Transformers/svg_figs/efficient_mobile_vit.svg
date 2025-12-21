@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 550">
+  <defs>
+    <linearGradient id="pvtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22"/>
+      <stop offset="100%" style="stop-color:#d35400"/>
+    </linearGradient>
+    <linearGradient id="mobileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60"/>
+      <stop offset="100%" style="stop-color:#229954"/>
+    </linearGradient>
+    <linearGradient id="effGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#8e44ad"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="475" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Efficient and Mobile Vision Transformers</text>
+  
+  <!-- Goals Section -->
+  <g>
+    <rect x="50" y="60" width="850" height="80" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2"/>
+    <text x="475" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle" dominant-baseline="middle">Key Goals: Reduce Complexity | Mobile Deployment | Edge Devices | Real-time Inference</text>
+    
+    <rect x="120" y="105" width="150" height="25" rx="5" fill="#e74c3c"/>
+    <text x="195" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">O(N^2) -> O(N)</text>
+    
+    <rect x="300" y="105" width="150" height="25" rx="5" fill="#27ae60"/>
+    <text x="375" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Lower FLOPs</text>
+    
+    <rect x="480" y="105" width="150" height="25" rx="5" fill="#3498db"/>
+    <text x="555" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Smaller Models</text>
+    
+    <rect x="660" y="105" width="150" height="25" rx="5" fill="#9b59b6"/>
+    <text x="735" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Faster Inference</text>
+  </g>
+  
+  <!-- PVT -->
+  <g>
+    <rect x="50" y="165" width="200" height="350" rx="10" fill="url(#pvtGrad)"/>
+    <text x="150" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">PVT</text>
+    <text x="150" y="215" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">Pyramid Vision Trans.</text>
+    
+    <rect x="65" y="235" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="150" y="250" font-family="Arial, sans-serif" font-size="10" fill="#d35400" text-anchor="middle" dominant-baseline="middle">Spatial Reduction</text>
+    <text x="150" y="263" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Attention (SRA)</text>
+    
+    <rect x="65" y="280" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="150" y="295" font-family="Arial, sans-serif" font-size="10" fill="#d35400" text-anchor="middle" dominant-baseline="middle">Progressive Shrinking</text>
+    <text x="150" y="308" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Feature Maps</text>
+    
+    <rect x="65" y="325" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="150" y="340" font-family="Arial, sans-serif" font-size="10" fill="#d35400" text-anchor="middle" dominant-baseline="middle">Multi-scale Features</text>
+    <text x="150" y="353" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">for Dense Prediction</text>
+    
+    <rect x="65" y="375" width="170" height="50" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="150" y="395" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Complexity:</text>
+    <text x="150" y="412" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">O(N^2/R^2)</text>
+    
+    <text x="150" y="455" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">PVT-Tiny: 13M</text>
+    <text x="150" y="475" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">PVT-Small: 25M</text>
+    <text x="150" y="495" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">PVT-Large: 61M</text>
+  </g>
+  
+  <!-- MobileViT -->
+  <g>
+    <rect x="275" y="165" width="200" height="350" rx="10" fill="url(#mobileGrad)"/>
+    <text x="375" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">MobileViT</text>
+    <text x="375" y="215" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">Mobile-first Design</text>
+    
+    <rect x="290" y="235" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="375" y="250" font-family="Arial, sans-serif" font-size="10" fill="#229954" text-anchor="middle" dominant-baseline="middle">MobileNetV2 Blocks</text>
+    <text x="375" y="263" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">+ MobileViT Blocks</text>
+    
+    <rect x="290" y="280" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="375" y="295" font-family="Arial, sans-serif" font-size="10" fill="#229954" text-anchor="middle" dominant-baseline="middle">Unfold-Transformer</text>
+    <text x="375" y="308" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">-Fold Pattern</text>
+    
+    <rect x="290" y="325" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="375" y="340" font-family="Arial, sans-serif" font-size="10" fill="#229954" text-anchor="middle" dominant-baseline="middle">Light Weight</text>
+    <text x="375" y="353" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Convolutions</text>
+    
+    <rect x="290" y="375" width="170" height="50" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="375" y="395" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Complexity:</text>
+    <text x="375" y="412" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">O(N)</text>
+    
+    <text x="375" y="455" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">MobileViT-XS: 2.3M</text>
+    <text x="375" y="475" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">MobileViT-S: 5.6M</text>
+    <text x="375" y="495" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">iPhone 12: 7ms</text>
+  </g>
+  
+  <!-- EfficientFormer -->
+  <g>
+    <rect x="500" y="165" width="200" height="350" rx="10" fill="url(#effGrad)"/>
+    <text x="600" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">EfficientFormer</text>
+    <text x="600" y="215" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">Latency-driven Design</text>
+    
+    <rect x="515" y="235" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="600" y="250" font-family="Arial, sans-serif" font-size="10" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Dimension-consistent</text>
+    <text x="600" y="263" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Design</text>
+    
+    <rect x="515" y="280" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="600" y="295" font-family="Arial, sans-serif" font-size="10" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">MetaFormer Blocks</text>
+    <text x="600" y="308" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Pool / Attention</text>
+    
+    <rect x="515" y="325" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="600" y="340" font-family="Arial, sans-serif" font-size="10" fill="#2980b9" text-anchor="middle" dominant-baseline="middle">Hardware Optimized</text>
+    <text x="600" y="353" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Operations</text>
+    
+    <rect x="515" y="375" width="170" height="50" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="600" y="395" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Latency:</text>
+    <text x="600" y="412" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">1.6ms (iPhone)</text>
+    
+    <text x="600" y="455" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">EfficientFormer-L1: 12M</text>
+    <text x="600" y="475" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">EfficientFormer-L3: 31M</text>
+    <text x="600" y="495" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">79.2% Top-1 Acc</text>
+  </g>
+  
+  <!-- EdgeViT -->
+  <g>
+    <rect x="725" y="165" width="200" height="350" rx="10" fill="url(#edgeGrad)"/>
+    <text x="825" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">EdgeViT</text>
+    <text x="825" y="215" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" text-anchor="middle" dominant-baseline="middle">Edge Device Focused</text>
+    
+    <rect x="740" y="235" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="825" y="250" font-family="Arial, sans-serif" font-size="10" fill="#8e44ad" text-anchor="middle" dominant-baseline="middle">Local-Global-Local</text>
+    <text x="825" y="263" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Encoder</text>
+    
+    <rect x="740" y="280" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="825" y="295" font-family="Arial, sans-serif" font-size="10" fill="#8e44ad" text-anchor="middle" dominant-baseline="middle">Self-Attention on</text>
+    <text x="825" y="308" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Subsampled Tokens</text>
+    
+    <rect x="740" y="325" width="170" height="35" rx="5" fill="white" opacity="0.95"/>
+    <text x="825" y="340" font-family="Arial, sans-serif" font-size="10" fill="#8e44ad" text-anchor="middle" dominant-baseline="middle">Optimal Balance</text>
+    <text x="825" y="353" font-family="Arial, sans-serif" font-size="9" fill="#7f8c8d" text-anchor="middle" dominant-baseline="middle">Speed vs Accuracy</text>
+    
+    <rect x="740" y="375" width="170" height="50" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="825" y="395" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">Params:</text>
+    <text x="825" y="412" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">~4-13M</text>
+    
+    <text x="825" y="455" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">EdgeViT-XXS: 4.1M</text>
+    <text x="825" y="475" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">EdgeViT-S: 11.1M</text>
+    <text x="825" y="495" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" dominant-baseline="middle">78.4% Top-1 Acc</text>
+  </g>
+</svg>

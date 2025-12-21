@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d"/>
+      <stop offset="100%" style="stop-color:#f4c430"/>
+    </linearGradient>
+    <linearGradient id="paramsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <linearGradient id="gradGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f472b6"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="#0f172a"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="26" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Test-Time Training (TTT)
+  </text>
+  <text x="450" y="65" font-family="monospace" font-size="12" fill="#64748b" text-anchor="middle" dominant-baseline="middle">
+    Hidden states as learnable parameters that update during inference
+  </text>
+  
+  <!-- Main concept -->
+  <rect x="30" y="90" width="840" height="150" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2" filter="url(#shadow)"/>
+  <text x="450" y="120" font-family="Arial" font-size="15" fill="#38bdf8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+    Core Idea: Treat Hidden State Hₜ as Learnable Parameters
+  </text>
+  
+  <!-- Flow diagram -->
+  <g transform="translate(60, 145)">
+    <!-- Input X -->
+    <rect x="0" y="0" width="70" height="50" rx="8" fill="url(#inputGrad)" filter="url(#shadow)"/>
+    <text x="35" y="28" font-family="Arial" font-size="18" fill="#1e293b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">X</text>
+    <text x="35" y="65" font-family="monospace" font-size="10" fill="#ffd93d" text-anchor="middle" dominant-baseline="middle">Input</text>
+    
+    <text x="90" y="28" font-family="serif" font-size="18" fill="#94a3b8" dominant-baseline="middle">·</text>
+    
+    <!-- Learnable H_t -->
+    <rect x="115" y="-10" width="100" height="70" rx="12" fill="url(#paramsGrad)" filter="url(#shadow)"/>
+    <text x="165" y="18" font-family="serif" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Hₜ</text>
+    <text x="165" y="43" font-family="monospace" font-size="9" fill="#e0f2fe" text-anchor="middle" dominant-baseline="middle">Learnable Params</text>
+    
+    <!-- Arrow -->
+    <text x="240" y="28" font-family="Arial" font-size="20" fill="#fff" dominant-baseline="middle">→</text>
+    
+    <!-- Output -->
+    <rect x="275" y="0" width="85" height="50" rx="8" fill="url(#outputGrad)" filter="url(#shadow)"/>
+    <text x="317" y="28" font-family="Arial" font-size="16" fill="#1e293b" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Output</text>
+    
+    <!-- Update loop -->
+    <rect x="215" y="75" width="65" height="25" rx="4" fill="url(#gradGrad)"/>
+    <text x="247" y="90" font-family="Arial" font-size="10" fill="#fff" text-anchor="middle" dominant-baseline="middle">∇ Output</text>
+    <text x="190" y="110" font-family="monospace" font-size="10" fill="#f472b6" text-anchor="middle" dominant-baseline="middle">Update Hₜ!</text>
+  </g>
+  
+  <!-- Key insight box -->
+  <rect x="500" y="135" width="350" height="90" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="160" font-family="Arial" font-size="12" fill="#38bdf8" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Key Insight</text>
+  <text x="520" y="185" font-family="monospace" font-size="10" fill="#94a3b8" dominant-baseline="middle">Unlike standard attention where H is</text>
+  <text x="520" y="205" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">computed, TTT makes H learnable and</text>
+  <text x="520" y="225" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">updates it with self-supervised loss!</text>
+  
+  <!-- Comparison -->
+  <!-- Standard -->
+  <rect x="30" y="260" width="410" height="210" rx="14" fill="#1e293b" stroke="#64748b" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="260" width="410" height="40" rx="14" fill="#64748b"/>
+  <rect x="30" y="285" width="410" height="15" fill="#64748b"/>
+  <text x="235" y="285" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Standard Linear Attention</text>
+  
+  <text x="55" y="330" font-family="Arial" font-size="12" fill="#e2e8f0" dominant-baseline="middle">State Update:</text>
+  <rect x="160" y="315" width="250" height="25" rx="5" fill="#0f172a"/>
+  <text x="285" y="330" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">Hₜ = Hₜ₋₁ + kₜᵀ · vₜ</text>
+  
+  <text x="55" y="370" font-family="Arial" font-size="12" fill="#e2e8f0" dominant-baseline="middle">Output:</text>
+  <rect x="160" y="355" width="250" height="25" rx="5" fill="#0f172a"/>
+  <text x="285" y="370" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle">oₜ = qₜ · Hₜ</text>
+  
+  <text x="55" y="410" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">• H is computed (not learned)</text>
+  <text x="55" y="430" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">• Simple accumulation</text>
+  <text x="55" y="450" font-family="monospace" font-size="10" fill="#64748b" dominant-baseline="middle">• No gradient updates at inference</text>
+  
+  <!-- TTT -->
+  <rect x="460" y="260" width="410" height="210" rx="14" fill="#1e293b" stroke="#38bdf8" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="460" y="260" width="410" height="40" rx="14" fill="url(#paramsGrad)"/>
+  <rect x="460" y="285" width="410" height="15" fill="url(#paramsGrad)"/>
+  <text x="665" y="285" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" dominant-baseline="middle">Test-Time Training (TTT)</text>
+  
+  <text x="485" y="330" font-family="Arial" font-size="12" fill="#e2e8f0" dominant-baseline="middle">Forward:</text>
+  <rect x="560" y="315" width="280" height="25" rx="5" fill="#0f172a"/>
+  <text x="700" y="330" font-family="monospace" font-size="11" fill="#4ade80" text-anchor="middle" dominant-baseline="middle">oₜ = f(xₜ; Hₜ) (learnable Hₜ)</text>
+  
+  <text x="485" y="370" font-family="Arial" font-size="12" fill="#e2e8f0" dominant-baseline="middle">Update:</text>
+  <rect x="560" y="355" width="280" height="25" rx="5" fill="#0f172a"/>
+  <text x="700" y="370" font-family="monospace" font-size="11" fill="#f472b6" text-anchor="middle" dominant-baseline="middle">Hₜ₊₁ = Hₜ - η·∇ₕℒ(oₜ, target)</text>
+  
+  <text x="485" y="410" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">• H is learned at test time!</text>
+  <text x="485" y="430" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">• Uses self-supervised objectives</text>
+  <text x="485" y="450" font-family="monospace" font-size="10" fill="#4ade80" dominant-baseline="middle">• Adapts to input during inference</text>
+</svg>
