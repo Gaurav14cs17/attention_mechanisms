@@ -335,7 +335,7 @@ DeiT addressed this with better training recipes and distillation.
 **Answer:** ViT is trained with large batch sizes:
 - Typical: 1024-4096
 - Uses learning rate warmup
-- Linear LR scaling rule: LR ∝ batch_size
+- Linear LR scaling rule: LR ∝ `batch_size`
 
 Large batches:
 - More stable gradients
@@ -863,7 +863,7 @@ Typical warmup: 5-10 epochs. Final LR: ~1e-5.
 **Answer:**
 - **Standard**: 1024-4096
 - **With gradient accumulation**: Effective larger batches
-- **Learning rate scaling**: LR ∝ batch_size / 256
+- **Learning rate scaling**: LR ∝ `batch_size` / 256
 
 Large batches:
 - More stable gradients
